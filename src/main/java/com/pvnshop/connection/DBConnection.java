@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 public class DBConnection {
 	private static String DB_URL ="jdbc:mysql://localhost:3306/pvnshop";
 	private static String USER_NAME = "root";
-	private static String PASSWORD = "Nghia2904@";
+	private static String PASSWORD ="Nghia2904@";
 	private static Connection con;
 	
 	public static Connection getConnection() throws IOException {
