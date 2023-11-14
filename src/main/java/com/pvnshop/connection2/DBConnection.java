@@ -1,4 +1,4 @@
-package com.pvnshop.connection;
+package com.pvnshop.connection2;
 
 import java.io.IOException;
 import java.sql.Connection;
