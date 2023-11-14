@@ -32,7 +32,7 @@ public class DBConnection {
 		try {
 			Connection conn = getConnection();
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM category");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM product");
 			while (rs.next()) {
 			System.out.println(rs.getInt(1) + " " + rs.getString(2) );
 			}

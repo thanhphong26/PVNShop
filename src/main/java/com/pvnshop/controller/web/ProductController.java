@@ -35,9 +35,9 @@ public class ProductController extends HttpServlet {
 	}
 
 	private void top3(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List <ProductModel> i = pro.findTop3();
-		req.setAttribute("top3", i);
-		RequestDispatcher rd = req.getRequestDispatcher("/views/web/home.jsp");
+//		List <ProductModel> i = pro.findTop3();
+//		req.setAttribute("top3", i);
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/home.jsp");
 		rd.forward(req, resp);
 		
 	}
