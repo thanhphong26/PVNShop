@@ -13,5 +13,9 @@ public class CartServiceImpl implements ICartService{
 	public List<CartModel> findByUser(String user) {
 		return cartD.findByUser(user);
 	}
+	@Override
+	public void delete(int id) {
+		cartD.delete(id);
+	}
 
 }

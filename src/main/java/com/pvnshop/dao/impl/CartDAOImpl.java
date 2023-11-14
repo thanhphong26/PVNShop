@@ -3,6 +3,7 @@ package com.pvnshop.dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +33,20 @@ public class CartDAOImpl implements ICartDAO{
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	@Override
+	public void delete(int id) {
+		String query = "delete from cart where product_id = ?";
+		try {
+			Connection conn = DBConnection.getConnection();
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }
