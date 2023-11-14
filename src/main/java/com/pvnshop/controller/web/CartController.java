@@ -46,6 +46,7 @@ public class CartController extends HttpServlet{
 		        NumberFormat vietnameseCurrencyFormat = NumberFormat.getCurrencyInstance(vietnameseLocale);
 		        String vietnameseCurrency = vietnameseCurrencyFormat.format(price);
 		        o.add(vietnameseCurrency);
+		        o.add(pmodel.getImage());
 				obs.add(o);
 			}
 			req.setAttribute("listp", obs);

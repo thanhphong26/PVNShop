@@ -48,12 +48,14 @@ table {
 th, td {
 	border: 1px solid #ddd;
 	padding: 8px;
-	text-align: left;
+	text-align: center;
+	
 }
 
 th {
 	background-color: #000;
 	color: #fff;
+	text-align: center;
 }
 
 input[type="number"] {
@@ -63,25 +65,24 @@ input[type="number"] {
 }
 
 input[type="submit"] {
-    display: block;
-    margin: auto;
-    margin-top: 10px;
-    background-color: #000;
-    color: #fff;
-    padding: 10px 15px; /* Giảm kích thước padding */
-    border: none;
-    cursor: pointer;
-    border-radius: 15px; /* Góc bo tròn nhỏ hơn */
-    font-size: 16px; /* Giảm kích thước chữ */
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.2s ease-in-out;
+	display: block;
+	margin: auto;
+	margin-top: 10px;
+	background-color: #000;
+	color: #fff;
+	padding: 10px 15px; /* Giảm kích thước padding */
+	border: none;
+	cursor: pointer;
+	border-radius: 15px; /* Góc bo tròn nhỏ hơn */
+	font-size: 16px; /* Giảm kích thước chữ */
+	transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out,
+		transform 0.2s ease-in-out;
 }
 
 input[type="submit"]:hover {
-    background-color: #333; /* Màu nền đen đậm khi di chuột qua */
-    transform: scale(1.05);
+	background-color: #333; /* Màu nền đen đậm khi di chuột qua */
+	transform: scale(1.05);
 }
-
-
 </style>
 
 	<h2>My Cart</h2>
@@ -89,7 +90,8 @@ input[type="submit"]:hover {
 	<form action="thanhToan" method="post">
 		<table>
 			<tr>
-				<th>Sản phẩm</th>
+				<th>Hình ảnh</th>
+				<th>Tên Sản phẩm</th>
 				<th>Giá</th>
 				<th>Số lượng</th>
 				<th>Action</th>
@@ -98,6 +100,7 @@ input[type="submit"]:hover {
 			<!-- Thêm dòng trong mảng 2D sử dụng JSTL -->
 			<c:forEach var="p" items="${listp}">
 				<tr>
+					<td><img src="${p[3]}" width="150" height="100"></td>
 					<td>${p[1]}</td>
 					<td>${p[2]}</td>
 					<td><input type="number" name="${p[0]}sl" value="1" min="1"></td>
