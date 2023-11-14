@@ -24,9 +24,7 @@
 </head>
 <body>
 	<%@ include file="/common/web/header.jsp"%>
-	<div class="container">
 		<decorator:body></decorator:body>
-	</div>
 	<%@ include file="/common/footer.jsp"%>
 	<script src="<c:url value="/templates/web/js/jquery.min.js"/>"></script>
 	<script src="<c:url value="/templates/web/js/bootstrap.min.js"/>"></script>

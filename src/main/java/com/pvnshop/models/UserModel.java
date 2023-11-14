@@ -6,18 +6,30 @@ public class UserModel {
 	private String phone;
 	private String email;
 	private String address;
+	private String password;
 	private byte isAdmin;
 	public UserModel() {
 		super();
 	}
-	public UserModel(String username, String name, String phone, String email, String address, byte isAdmin) {
+	public UserModel(String username, String name, String phone, String email, String address, String password,
+			byte isAdmin) {
 		super();
 		this.username = username;
 		this.name = name;
 		this.phone = phone;
 		this.email = email;
 		this.address = address;
+		this.password = password;
 		this.isAdmin = isAdmin;
+	}
+	public UserModel(String username, String name, String phone, String email, String address, String password) {
+		super();
+		this.username = username;
+		this.name = name;
+		this.phone = phone;
+		this.email = email;
+		this.address = address;
+		this.password = password;
 	}
 	public String getUsername() {
 		return username;
@@ -48,6 +60,12 @@ public class UserModel {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public byte getIsAdmin() {
 		return isAdmin;
