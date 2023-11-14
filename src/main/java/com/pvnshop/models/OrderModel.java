@@ -1,5 +1,5 @@
 package com.pvnshop.models;
 
-public class HelloWorld {
+public class OrderModel {
 
 }

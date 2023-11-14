@@ -3,12 +3,6 @@
 	<decorator name="admin" page="admin.jsp">
 		<pattern>/admin*</pattern>
 	</decorator>
-	<decorator name="seller" page="seller.jsp">
-		<pattern>/seller*</pattern>
-	</decorator>
-	<decorator name="shipper" page="shipper.jsp">
-		<pattern>/seller*</pattern>
-	</decorator>
 	<decorator name="web" page="web.jsp">
 		<pattern>/*</pattern>
 	</decorator>
