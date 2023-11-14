@@ -1,10 +1,11 @@
-package com.pvnshop.controller.web;
+package com.pvnshop.service;
 
 import java.util.List;
 
 import com.pvnshop.models.ProductModel;
 
-public interface IProductDAO {
-	List<ProductModel> findAll();
+public interface IProductService {
+	List<ProductModel> findall();
 	List<ProductModel> findByID(int id);
+
 }
