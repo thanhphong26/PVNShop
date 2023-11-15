@@ -11,16 +11,21 @@ import com.pvnshop.service.IProductService;
 
 public class ProductServiceImpl implements IProductService {
 	
-	private static IProductDAO cat = new productDao();
+	private static IProductDAO pDAO = new productDao();
 	@Override
 	public List<ProductModel> findTop3() {
-		// TODO Auto-generated method stub
-		return cat.findTop3();
+		return pDAO.findTop3();
 	}
 	@Override
 	public List<ProductModel> findRateTop3() {
-		// TODO Auto-generated method stub
-		return cat.findRateTop3();
+		return pDAO.findRateTop3();
+	}
+  public ProductModel findByID(int id) 
+	{
+		return pDAO.findByID(id);
+	}
+	public List<ProductModel> findall() {
+		return pDAO.findAll();
 	}
 
 }
