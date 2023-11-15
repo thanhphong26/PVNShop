@@ -72,6 +72,16 @@ public class ProductDAOImpl implements IProductDAO{
 			}
 			return null;
 			}
+	@Override
+	public List<ProductModel> findTop3() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<ProductModel> findRateTop3() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
 

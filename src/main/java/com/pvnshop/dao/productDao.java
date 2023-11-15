@@ -92,5 +92,15 @@ public class productDao implements IProductDAO {
 		
 		return l;
 	}
+	@Override
+	public List<ProductModel> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ProductModel findByID(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
