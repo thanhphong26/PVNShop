@@ -27,5 +27,10 @@ public class ProductServiceImpl implements IProductService {
 	public List<ProductModel> findall() {
 		return pDAO.findAll();
 	}
+	@Override
+	public List<ProductModel> findTop() {
+		// TODO Auto-generated method stub
+		return pDAO.findTop();
+	}
 
 }
