@@ -27,7 +27,7 @@ import com.pvnshop.service.impl.UserServiceImpl;
 
 
 @WebServlet(urlPatterns =  {"/home","/admin_page",
-		"/admin_page/SanPham","/admin_page/HoaDon","/admin_page/User","/admin_page/ThongKe"})
+		"/admin_page/SanPham","/admin_page/HoaDon","/admin_page/User","/admin_page/ThongKe","/admin_page/ThongKeDT"})
 public class ProductController extends HttpServlet {
 
 	/**
@@ -43,6 +43,9 @@ public class ProductController extends HttpServlet {
 		String url = req.getRequestURI().toString();
 		if(url.contains("home")) {
 			top3(req,resp);
+			
+		}else if(url.contains("admin_page/ThongKeDT")) {
+			tkdt(req,resp);
 			
 		}else if(url.contains("admin_page/ThongKe")) {
 			tkbc(req,resp);
@@ -61,6 +64,13 @@ public class ProductController extends HttpServlet {
 			rd.forward(req, resp);
 		}
 		
+	}
+
+	private void tkdt(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int i= or.sum();
+		req.setAttribute("sum", i);
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/tkdt.jsp");
+		rd.forward(req, resp);
 	}
 
 	private void tkbc(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

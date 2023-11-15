@@ -15,10 +15,10 @@
       <div style="text-align: right; margin-top: 20px;">
     <h1 style="display: inline-block; margin-right: 410px; margin-left: 5px;">Quản lý sản phẩm</h1>
     
-    <input type="button" value="Thêm" style="display: inline-block; height: 30px; width: 140px; margin: 15px 10px; background-color: #33FF99; color: white; border-radius: 15px;">
+    <input type="button" value="Thêm" style="display: inline-block; height: 30px; width: 140px; margin: 15px 10px; background-color: #00AA00; color: white; border-radius: 15px;">
 
     <form action="/PVNShop/admin_page" style="display: inline-block;">
-        <input type="submit" value="Quay Lại" style="height: 30px; width: 140px; margin: 15px 10px; background-color: #FF6633; color: white; border-radius: 15px;">
+        <input type="submit" value="Quay Lại" style="height: 30px; width: 140px; margin: 15px 10px; background-color: #DD0000; color: white; border-radius: 15px;">
     </form>
 </div>
 

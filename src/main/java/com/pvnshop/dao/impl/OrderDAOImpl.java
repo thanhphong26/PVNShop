@@ -46,5 +46,25 @@ public class OrderDAOImpl implements IOrderDAO {
 		
 		return l;
 	}
+	@Override
+	public int sum() {
+		String query ="SELECT SUM(price) as n\r\n"
+				+ "FROM order_detail d JOIN product p\r\n"
+				+ "ON d.product_id = p.productId";
+		int l = 0;
+		try {
+			conn = new DBConnection().getConnection();
+			ps = conn.prepareStatement(query);
+			rs= ps.executeQuery();
+			while(rs.next()) {
+				l = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return l;
+	}
 
 }

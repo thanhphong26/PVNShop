@@ -6,4 +6,5 @@ import com.pvnshop.models.OrderModel;
 
 public interface IOrderDAO {
 	List <OrderModel> findAll();
+	int sum();
 }

@@ -17,5 +17,10 @@ public class OrderServiceImpl implements IOrderService {
 		// TODO Auto-generated method stub
 		return oDAO.findAll();
 	}
+	@Override
+	public int sum() {
+		// TODO Auto-generated method stub
+		return oDAO.sum();
+	}
 
 }

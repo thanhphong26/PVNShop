@@ -18,7 +18,7 @@
    
 
     <form action="/PVNShop/admin_page" style="display: inline-block;">
-        <input type="submit" value="Quay Lại" style="height: 30px; width: 140px; margin: 15px 10px; background-color: #FF6633; color: white; border-radius: 15px;">
+        <input type="submit" value="Quay Lại" style="height: 30px; width: 140px; margin: 15px 10px; background-color: #DD0000; color: white; border-radius: 15px;">
     </form>
 </div>
 
@@ -35,7 +35,7 @@
 					<ul class="main-nav nav navbar-nav">
 						<li class="active"><a href="#">Bán chạy</a></li>
 
-						<li><a href="#">Doanh Thu</a></li>
+						<li><a href="ThongKeDT">Doanh Thu</a></li>
 
 					</ul>
 					<!-- /NAV -->
