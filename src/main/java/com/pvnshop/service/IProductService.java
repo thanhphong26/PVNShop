@@ -5,7 +5,11 @@ import java.util.List;
 import com.pvnshop.models.ProductModel;
 
 public interface IProductService {
-	List<ProductModel> findAll();
-	List<ProductModel> findProductByCate(int cateId);
+	public List<ProductModel> findTop3();
+	public List<ProductModel> findRateTop3();
+  List<ProductModel> findall();
+	ProductModel findByID(int id);
+  List<ProductModel> findProductByCate(int cateId);
 	int CountProductByCate(int cateId);
 }
+

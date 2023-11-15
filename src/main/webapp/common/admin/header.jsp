@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@  page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <header>
 			<!-- TOP HEADER -->
@@ -38,9 +38,11 @@
 							<div class="header-search">
 								<form>
 									<select class="input-select">
-										<option value="0">All Categories</option>
-										<option value="1">Category 01</option>
-										<option value="1">Category 02</option>
+										<option value="0">Tất cả</option>
+										<option value="1">Doanh nhân</option>
+										<option value="2">Mỏng nhẹ</option>
+										<option value="2">Sinh viên - Văn phòng</option>
+										<option value="2">Thiết kế đồ hoạ	</option>
 									</select>
 									<input class="input" placeholder="Search here">
 									<button class="search-btn">Search</button>
