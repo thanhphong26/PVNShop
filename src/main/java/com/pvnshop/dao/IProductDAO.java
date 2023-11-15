@@ -5,6 +5,8 @@ import java.util.List;
 import com.pvnshop.models.ProductModel;
 
 public interface IProductDAO {
-	List<ProductModel> findAll();
+	public List<ProductModel> findTop3();
+	public List<ProductModel> findRateTop3();
+  List<ProductModel> findAll();
 	ProductModel findByID(int id);
 }
