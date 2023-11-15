@@ -104,7 +104,7 @@ input[type="submit"]:hover {
 					<td>${p[1]}</td>
 					<td>${p[2]}</td>
 					<td><input type="number" name="${p[0]}sl" value="1" min="1"></td>
-					<td><a href="deleteCart"
+					<td><a href="deleteCart?id=${p[0]}"
 						style="text-decoration: none; display: inline-block;"> <span
 							style="background-color: #cc0000; color: #fff; padding: 10px 15px; border: 1px solid red; border-radius: 20px; transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;">
 								Xoá </span>
