@@ -17,6 +17,12 @@ public class RateModel {
 		this.start = start;
 		this.username = username;
 	}
+	
+	public RateModel(String context, String username) {
+		super();
+		this.context = context;
+		this.username = username;
+	}
 	public int getRateID() {
 		return rateID;
 	}

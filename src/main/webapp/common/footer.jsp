@@ -7,11 +7,22 @@
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
 								<h3 class="footer-title">About Us</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+								<p>Nhom 6 CNPM </p>
+								<ul style="list-style-type: disc;">
+								  <li>Nguyen Trung Nghia 21110560</li>
+								  <li>Nguyen Thanh Phong 21110560 </li>
+								  <li>Nguyen Quoc Anh Vu 21110560</li>
+								  <li>Nguyen Huynh Nguyen 21110560</li>
+								  <li>Tran Nhat Nguyen 21110560</li>
+								  <li>Nguyen Thien Nhan 21110560</li>
+								  
+								</ul>
+								<br>
+						
 								<ul class="footer-links">
-									<li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-									<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-									<li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+									<li><a href="#"><i class="fa fa-map-marker"></i>1 Vo Van Ngan, TP Thu Duc</a></li>
+									<li><a href="#"><i class="fa fa-phone"></i>012-345-1234</a></li>
+									<li><a href="#"><i class="fa fa-envelope-o"></i>pvnshop@gmail.com</a></li>
 								</ul>
 							</div>
 						</div>
@@ -73,7 +84,7 @@
 								<li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
 							</ul>
 							<span class="copyright">
-								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by Nhóm 6 <a href="https://colorlib.com" target="_blank">Colorlib</a>
 							</span>
 						</div>
 					</div>
