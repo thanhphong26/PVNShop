@@ -7,6 +7,6 @@ import com.pvnshop.models.ProductModel;
 public interface IProductDAO {
 	public List<ProductModel> findTop3();
 	public List<ProductModel> findRateTop3();
-  List<ProductModel> findAll();
+	List<ProductModel> findAll();
 	ProductModel findByID(int id);
 }

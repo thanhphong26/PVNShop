@@ -17,16 +17,16 @@ public class DBConnection {
 	private static Connection conn;
 	
 	public static Connection getConnection() throws IOException {
-		con =null;
+		conn =null;
 		try {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-			con = (Connection) DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
+			conn = (Connection) DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
 			
 		} catch (SQLException ex) {
 			Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE,null,ex);
 			
 		}
-		return (con);
+		return (conn);
 	}
 	public static void main(String[] args) {
 		try {
