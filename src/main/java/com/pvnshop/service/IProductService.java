@@ -9,5 +9,7 @@ public interface IProductService {
 	public List<ProductModel> findRateTop3();
   List<ProductModel> findall();
 	ProductModel findByID(int id);
+  List<ProductModel> findProductByCate(int cateId);
+	int CountProductByCate(int cateId);
 }
 

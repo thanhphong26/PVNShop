@@ -9,4 +9,6 @@ public interface IProductDAO {
 	public List<ProductModel> findRateTop3();
 	List<ProductModel> findAll();
 	ProductModel findByID(int id);
+  List<ProductModel> findProductByCate(int cateId);
+	int CountProductByCate(int cateId);
 }

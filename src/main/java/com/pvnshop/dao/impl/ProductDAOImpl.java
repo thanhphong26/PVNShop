@@ -10,37 +10,96 @@ import com.pvnshop.connection.DBConnection;
 import com.pvnshop.dao.IProductDAO;
 import com.pvnshop.models.ProductModel;
 
+public class ProductDAOImpl implements IProductDAO {
 
-public class ProductDAOImpl implements IProductDAO{
+	Connection conn;
+	static IProductDAO pro = new ProductDAOImpl();
+
+	@Override
 	public List<ProductModel> findAll() {
+		String sql = "Select * from product";
 		List<ProductModel> list = new ArrayList<ProductModel>();
-		String sql = "SELECT * FROM product";
 		try {
 			new DBConnection();
-			Connection conn = DBConnection.getConnection();
+			conn = DBConnection.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			while(rs.next()) {
-				ProductModel listall = new ProductModel();
-				listall.setProductID(rs.getInt(1));
-				listall.setProductName(rs.getString(2));
-				listall.setVersion(rs.getString(3));
-				listall.setDescription(rs.getString(4));
-				listall.setPrice(rs.getInt(5));
-				listall.setColor(rs.getString(6));
-				listall.setSize(rs.getString(7));
-				listall.setInventory(rs.getInt(8));
-				listall.setImage(rs.getString(9));
-				listall.setCateID(rs.getInt(10));
-				listall.setManuID(rs.getInt(11));
-				list.add(listall);
-			}	;
-			
+			ResultSet rs = ps.executeQuery(sql);
+			while (rs.next()) {
+				ProductModel model = new ProductModel();
+
+				model.setProductID(rs.getInt("productId"));
+				model.setProductName(rs.getString("productName"));
+				model.setVersion(rs.getString("version"));
+				model.setDescription(rs.getString("description"));
+				model.setPrice(rs.getInt("price"));
+				model.setColor(rs.getString("color"));
+				model.setSize(rs.getString("size"));
+				model.setInventory(rs.getInt("inventory"));
+				model.setImage(rs.getString("image"));
+				model.setCateID(rs.getInt("cate_id"));
+				model.setManuID(rs.getInt("manu_id"));
+
+				list.add(model);
+			}
+			conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return list;
 	}
+	@Override
+	public List<ProductModel> findProductByCate(int cateId) {
+		String sql = "Select * from product where cate_id = ?";
+		List<ProductModel> list = new ArrayList<ProductModel>();
+		try {
+			new DBConnection();
+			conn = DBConnection.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, cateId);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				ProductModel model = new ProductModel();
+				model.setProductID(rs.getInt("productId"));
+				model.setProductName(rs.getString("productName"));
+				model.setVersion(rs.getString("version"));
+				model.setDescription(rs.getString("description"));
+				model.setPrice(rs.getInt("price"));
+				model.setColor(rs.getString("color"));
+				model.setSize(rs.getString("size"));
+				model.setInventory(rs.getInt("inventory"));
+				model.setImage(rs.getString("image"));
+				model.setCateID(rs.getInt("cate_id"));
+				model.setManuID(rs.getInt("manu_id"));
+				list.add(model);
+			}
+			conn.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+
+	}
+	@Override
+	public int CountProductByCate(int cateId) {
+		String sql = "Select count(productId) from product where cate_id = ?";
+		int count = 0;
+		try {
+			new DBConnection();
+			conn = DBConnection.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, cateId);
+			ResultSet rs = ps.executeQuery();	
+			while (rs.next()) {
+				count = rs.getInt(1); 
+			}
+			conn.close();	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+}
 	@Override
 	public ProductModel findByID(int id){
 			ProductModel model = new ProductModel();
@@ -105,7 +164,6 @@ public class ProductDAOImpl implements IProductDAO{
 				l.add(model);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return l;
@@ -143,7 +201,6 @@ public class ProductDAOImpl implements IProductDAO{
 				l.add(model);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return l;

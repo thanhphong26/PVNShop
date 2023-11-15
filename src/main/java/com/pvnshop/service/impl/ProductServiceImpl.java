@@ -1,6 +1,4 @@
 package com.pvnshop.service.impl;
-
-
 import java.util.List;
 
 import com.pvnshop.dao.IProductDAO;
@@ -24,8 +22,17 @@ public class ProductServiceImpl implements IProductService {
 	{
 		return pDAO.findByID(id);
 	}
-	public List<ProductModel> findall() {
+	@Override
+	public List<ProductModel> findAll() {
 		return pDAO.findAll();
 	}
+	@Override
+	public List<ProductModel> findProductByCate(int cateId) {
+		return pDAO.findProductByCate(cateId);
+	}
 
+	@Override
+	public int CountProductByCate(int cateId) {
+		return pDAO.CountProductByCate(cateId);
+	}
 }
