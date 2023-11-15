@@ -7,9 +7,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DBConnection {
-	private static String DB_URL="jdbc:mysql://localhost:3306/PVNShop";
+	private static String DB_URL="jdbc:mysql://localhost:3306/cnpm";
 	private static String USER_NAME="root";
-	private static String PASSWORD="15242635";
+	private static String PASSWORD="Nguyen123.";
 	private static Connection conn;
 	
 	public static Connection getConnection() {
