@@ -12,5 +12,6 @@ public interface IUserDAO {
 	UserModel getOneUser(String username);
 	UserModel login(String username, String password);
 	boolean checkExistUserEmail(String email);
+	boolean checkExistUsername(String username);
 	void registerUser(UserModel user);
 }

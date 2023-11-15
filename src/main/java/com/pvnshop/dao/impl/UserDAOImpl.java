@@ -29,8 +29,8 @@ public class UserDAOImpl implements IUserDAO{
 				user.setPhone(rs.getString(3));
 				user.setEmail(rs.getString(4));
 				user.setAddress(rs.getString(5));
-				user.setPassword(rs.getString(6));
-				user.setIsAdmin(rs.getByte(7));
+				user.setIsAdmin(rs.getByte(6));
+				user.setPassword(rs.getString(7));
 				listUser.add(user);
 			}
 		} catch (Exception e) {
@@ -41,7 +41,20 @@ public class UserDAOImpl implements IUserDAO{
 
 	@Override
 	public void insert(UserModel user) {
-		
+		String sql="insert into user values(?,?,?,?,?,?)";
+		try {
+			conn=DBConnection.getConnection();
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, user.getUsername());
+			ps.setString(2, user.getName());
+			ps.setString(3, user.getPhone());
+			ps.setString(4, user.getEmail());
+			ps.setString(5, user.getAddress());
+			ps.setString(6, user.getPassword());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 
@@ -72,8 +85,8 @@ public class UserDAOImpl implements IUserDAO{
 				user.setPhone(rs.getString(3));
 				user.setEmail(rs.getString(4));
 				user.setAddress(rs.getString(5));
-				user.setPassword(rs.getString(6));
-				user.setIsAdmin(rs.getByte(7));
+				user.setIsAdmin(rs.getByte(6));
+				user.setPassword(rs.getString(7));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -97,8 +110,8 @@ public class UserDAOImpl implements IUserDAO{
 				user.setPhone(rs.getString(3));
 				user.setEmail(rs.getString(4));
 				user.setAddress(rs.getString(5));
-				user.setPassword(rs.getString(6));
-				user.setIsAdmin(rs.getByte(7));
+				user.setIsAdmin(rs.getByte(6));
+				user.setPassword(rs.getString(7));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -122,8 +135,8 @@ public class UserDAOImpl implements IUserDAO{
 				user.setPhone(rs.getString(3));
 				user.setEmail(rs.getString(4));
 				user.setAddress(rs.getString(5));
-				user.setPassword(rs.getString(6));
-				user.setIsAdmin(rs.getByte(7));
+				user.setIsAdmin(rs.getByte(6));
+				user.setPassword(rs.getString(7));
 				listUser.add(user);
 			}
 		} catch (Exception e) {
@@ -136,7 +149,7 @@ public class UserDAOImpl implements IUserDAO{
 	}
 	@Override
 	public void registerUser(UserModel user) {
-		String sql="insert into user values(?,?,?,?,?,?)";
+		String sql="insert into user(userName, name, phone, email, addr, password) values(?,?,?,?,?,?)";
 		try {
 			conn=DBConnection.getConnection();
 			ps=conn.prepareStatement(sql);
@@ -150,6 +163,35 @@ public class UserDAOImpl implements IUserDAO{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public boolean checkExistUsername(String username) {
+		String sql="select * from user where userName=?";
+		List<UserModel> listUser=new ArrayList<UserModel>();
+		try {
+			conn=DBConnection.getConnection();
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, username);
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				UserModel user=new UserModel();
+				user.setUsername(rs.getString(1));
+				user.setName(rs.getString(2));
+				user.setPhone(rs.getString(3));
+				user.setEmail(rs.getString(4));
+				user.setAddress(rs.getString(5));
+				user.setIsAdmin(rs.getByte(6));
+				user.setPassword(rs.getString(7));
+				listUser.add(user);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if(!listUser.isEmpty()) {
+			return true;
+		}
+		return false;
 	}
 
 }

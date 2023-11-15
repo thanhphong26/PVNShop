@@ -1,260 +1,117 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
-<!DOCTYPE html>
 
 <style>
-body {
-	font-family: "Roboto", sans-serif;
-	background-color: #fff;
-}
-
-p {
-	color: #b3b3b3;
-	font-weight: 300;
-}
-
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-	font-family: "Roboto", sans-serif;
-}
-
-a {
-	-webkit-transition: .3s all ease;
-	-o-transition: .3s all ease;
-	transition: .3s all ease;
-}
-
-a:hover {
-	text-decoration: none !important;
-}
-
-.content {
-	padding: 7rem 0;
-}
-
+  /* Style for the registration form */
+  .aa-myaccount-register {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
 h2 {
 	font-size: 20px;
 	color: #DC3545;
 }
+  .aa-myaccount-register h4 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
 
-.login, .login .contents>.row {
-	height: 100vh;
-	min-height: 700px;
-}
+  .aa-login-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+  }
 
-@media ( max-width : 991.98px) {
-	.login {
-		height: 200px;
-	}
-}
+  .aa-login-form input[type="text"],
+  .aa-login-form input[type="password"],
+  .aa-login-form input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
 
-.login .contents {
-	background: none;
-}
+  .aa-login-form button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
 
-.login {
-	width: 100%;
-}
+  .aa-login-form button:hover {
+    background-color: #218838;
+  }
 
-.login .contents {
-	width: 50%;
-}
-
-@media ( max-width : 1199.98px) {
-	.login .contents, .login {
-		width: 100%;
-	}
-}
-
-.login .contents .form-control, .login .form-control {
-	border: none;
-	-webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-	border-radius: 4px;
-	height: 54px;
-	background: #fff;
-	background-color: #fff !important;
-}
-
-.login .contents .form-control:active, .login .contents .form-control:focus,
-	.login .form-control:active, .login .form-control:focus {
-	outline: none;
-	-webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-}
-
-.login {
-	background-size: cover;
-	background-position: center;
-}
-
-.login a {
-	color: #888;
-	text-decoration: underline;
-}
-
-.login .btn {
-	height: 54px;
-	padding-left: 30px;
-	padding-right: 30px;
-	border-radius: 10px;
-}
-
-.login .btn :hover {
-	background-color: #fb331a;
-	border-color: #fb331a;
-}
-
-.login .btn-primary {
-	color: #fff;
-	background-color: #fb771a;
-	border-color: #fb771a;
-}
-
-.login .btn-block {
-	display: block;
-	width: 100%;
-}
-
-.login .forgot-pass {
-	position: relative;
-	top: 2px;
-	font-size: 14px;
-}
-
-.control {
-	display: block;
-	position: relative;
-	padding-left: 30px;
-	margin-bottom: 15px;
-	cursor: pointer;
-	font-size: 14px;
-}
-
-.control .caption {
-	position: relative;
-	top: .2rem;
-	color: #888;
-}
-
-.control input {
-	position: absolute;
-	z-index: -1;
-	opacity: 0;
-}
-
-.control__indicator {
-	position: absolute;
-	top: 2px;
-	left: 0;
-	height: 20px;
-	width: 20px;
-	background: #e6e6e6;
-	border-radius: 4px;
-}
-
-.control--radio .control__indicator {
-	border-radius: 50%;
-}
-
-.control:hover input ~.control__indicator, .control input:focus ~.control__indicator
-	{
-	background: #ccc;
-}
-
-.control input:checked ~.control__indicator {
-	background: #fb771a;
-}
-
-.control:hover input:not([disabled]):checked ~.control__indicator,
-	.control input:checked:focus ~.control__indicator {
-	background: #fb8633;
-}
-
-.control input:disabled ~.control__indicator {
-	background: #e6e6e6;
-	opacity: 0.9;
-	pointer-events: none;
-}
-
-.control__indicator:after {
-	font-family: 'icomoon';
-	content: '✔';
-	position: absolute;
-	display: none;
-	font-size: 16px;
-	-webkit-transition: .3s all ease;
-	-o-transition: .3s all ease;
-	transition: .3s all ease;
-}
-
-.control input:checked ~.control__indicator:after {
-	display: block;
-	color: #fff;
-}
-
-.control--checkbox .control__indicator:after {
-	top: 50%;
-	left: 50%;
-	margin-top: -1px;
-	-webkit-transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-}
-
-.control--checkbox input:disabled ~.control__indicator:after {
-	border-color: #7b7b7b;
-}
-
-.control--checkbox input:disabled:checked ~.control__indicator {
-	background-color: #7e0cf5;
-	opacity: .2;
-}
-
-.ml-auto, .mx-auto {
-	margin-left: auto !important;
-}
+  /* Additional styles for error messages */
+  p[style^="color:red;"] {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
 </style>
+<section id="aa-catg-head-banner">
+    <div class="aa-catg-head-banner-area">
+     <div class="container">
+      <div class="aa-catg-head-banner-content">
+        <h1>Đăng Nhập</h1>
+        <ol class="breadcrumb">
+          <li style="color:#fff">Đăng nhập tài khoản</li>
+        </ol>
+      </div>
+     </div>
+   </div>
+  </section>
+  <!-- / catg header banner section -->
 
-<div class="login"
-	style="background-image: url('https://storage.googleapis.com/web-budget/Resource/Web/Login/bg_login.jpg');">
-	<div class="contents">
-		<div class="row align-items-center justify-content-center">
-			<div class="col-md-7">
-				<h3>
-					<strong>ĐĂNG NHẬP</strong>
-				</h3>
-				<h2>${mess}</h2>
-				<form action="login" method="post">
-					<div class="form-group first">
-						<label for="username">Tài khoản</label> <input type="text"
-							class="form-control" placeholder="Nhập tài khoản" name="username" value="${username}">
-					</div>
-					<div class="form-group last mb-3">
-						<label for="password">Mật khẩu</label> <input type="password"
-							class="form-control" placeholder="Nhập mật khẩu" name="password">
-					</div>
-					<div class="d-flex mb-2 align-items-center">
-						<label class="control control--checkbox mb-0"> <span
-							class="caption">Nhớ tài khoản</span> <input type="checkbox" id="remember"
-					name="remember" checked="checked" />
-							<div class="control__indicator"></div>
-						</label> <span class="ml-auto"><a href="#" class="forgot-pass">Quên
-								mật khẩu</a></span>
-					</div>
-					<div class="row">
+ <!-- Cart view section -->
+ <section id="aa-myaccount">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+        <div class="aa-myaccount-area">         
+            <div class="row">
+              <div class="col-md-8 col-md-push-2">
+                <div class="aa-myaccount-register">                 
+                 <h4>Đăng Nhập</h4>
+                 <h2>${error}</h2>
+                 <form name="formLogin" class="aa-login-form" method="post" action="login" >
+                     <label for="">Username<span>*</span></label>
+                    <input type="text" placeholder="Nhập tên tài khoản" name="username" required>
+                    <label for="">Mật khẩu<span>*</span></label>  
+                    <input type="password" placeholder="Nhập mật khẩu" name="password" required>  
+                    <input type="date" style="display: none" placeholder="Password" name="created" id="the-date">   
+                    <div class="row">
 						<div class="form-group mb-3 w-50">
 							<input type="submit" value="Đăng nhập"
 								class="btn btn-block btn-primary">
 						</div>
 						<div class="form-group mb-3 w-50">
-							<a href="signup">
+							<a href="register">
 								<button class="btn btn-block btn-primary" type="button">Đăng ký</button>
 							</a>
 						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
+					</div>                                                       
+                  </form>
+                </div>
+              </div>
+            </div>          
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>

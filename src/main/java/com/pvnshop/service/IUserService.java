@@ -1,4 +1,4 @@
-package com.pvnshop.service.impl;
+package com.pvnshop.service;
 
 import java.util.List;
 
@@ -12,5 +12,6 @@ public interface IUserService {
 	UserModel getOneUser(String username);
 	UserModel login(String username, String password);
 	boolean checkExistUserEmail(String email);
-	void registerUser(UserModel user);
+	boolean checkExistUsername(String username);
+	boolean registerUser(String username, String name, String phone, String email, String address, String password);
 }

@@ -17,7 +17,6 @@ public class Email {
 		Random rd = new Random();
 		int number = rd.nextInt(999999);
 		return String.format("06d", number);
-		
 	}
 	public boolean sendEmail(UserModel user) {
 		boolean test = false;
