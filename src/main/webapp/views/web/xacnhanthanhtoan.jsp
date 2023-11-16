@@ -39,12 +39,16 @@
             </tr>
         </table>
         <div style="text-align: center; margin-top: 20px;">
-
-    <input type="submit" value="Xác nhận thanh toán" style="background-color: #4caf50; color: #fff; padding: 12px 20px; border: none; border-radius: 20px; cursor: pointer; font-size: 15px; transition: background-color 0.3s;">
-
-    <a href="home" style="text-decoration: none;">
-        <button type="button" style="background-color: #cc0000; color: #fff; padding: 12px 20px; border: none; border-radius: 20px; cursor: pointer; font-size: 15px; transition: background-color 0.3s;">Hủy thanh toán</button>
-    </a>
+        <c:if test="${isBank == true}">
+        <div style="text-align: center;">
+		<img src="https://storage.googleapis.com/image_cnpm/Image_Product/momo2.jpg" style="width: 60%; height:400px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); margin-bottom:30px; display:block;margin-left: auto; margin-right: auto;">
+		</div>
+        </c:if>
+	    <input type="submit" value="Xác nhận thanh toán" style="background-color: #4caf50; color: #fff; padding: 12px 20px; border: none; border-radius: 20px; cursor: pointer; font-size: 15px; transition: background-color 0.3s;">
+	
+	    <a href="home" style="text-decoration: none;">
+	        <button type="button" style="background-color: #cc0000; color: #fff; padding: 12px 20px; border: none; border-radius: 20px; cursor: pointer; font-size: 15px; transition: background-color 0.3s;">Hủy thanh toán</button>
+	    </a>
 
 </div>
 
