@@ -62,8 +62,7 @@ public class ProductController extends HttpServlet {
 		}else if(url.contains("admin_page")) {
 			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/home.jsp");
 			rd.forward(req, resp);
-		}
-		
+		}	
 	}
 
 	private void tkdt(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -98,7 +97,7 @@ public class ProductController extends HttpServlet {
 	}
 
 	private void findAllAd(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<ProductModel> i = pro.findall();
+		List<ProductModel> i = pro.findAll();
 		req.setAttribute("list1", i);
 		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/spad.jsp");
 		rd.forward(req, resp);

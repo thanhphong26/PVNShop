@@ -26,7 +26,6 @@ public class ProductDAOImpl implements IProductDAO {
 			ResultSet rs = ps.executeQuery(sql);
 			while (rs.next()) {
 				ProductModel model = new ProductModel();
-
 				model.setProductID(rs.getInt("productId"));
 				model.setProductName(rs.getString("productName"));
 				model.setVersion(rs.getString("version"));
@@ -38,7 +37,6 @@ public class ProductDAOImpl implements IProductDAO {
 				model.setImage(rs.getString("image"));
 				model.setCateID(rs.getInt("cate_id"));
 				model.setManuID(rs.getInt("manu_id"));
-
 				list.add(model);
 			}
 			conn.close();
@@ -78,7 +76,6 @@ public class ProductDAOImpl implements IProductDAO {
 			e.printStackTrace();
 		}
 		return list;
-
 	}
 	@Override
 	public int CountProductByCate(int cateId) {
@@ -99,38 +96,37 @@ public class ProductDAOImpl implements IProductDAO {
 		}
 		return count;
 	}
-
 	@Override
 	public ProductModel findByID(int id){
-			ProductModel model = new ProductModel();
-			String sql = "SELECT * FROM product where productId=?";
-			try {
-				new DBConnection();
-				Connection conn = DBConnection.getConnection();
-				PreparedStatement ps = conn.prepareStatement(sql);
-				ps.setInt(1, id);
-				ResultSet rs = ps.executeQuery();
-				while(rs.next()) 
-				{
-					model.setProductID(rs.getInt(1));
-					model.setProductName(rs.getString(2));
-					model.setVersion(rs.getString(3));
-					model.setDescription(rs.getString(4));
-					model.setPrice(rs.getInt(5));
-					model.setColor(rs.getString(6));
-					model.setSize(rs.getString(7));
-					model.setInventory(rs.getInt(8));
-					model.setImage(rs.getString(9));
-					model.setCateID(rs.getInt(10));
-					model.setManuID(rs.getInt(11));
-					return model;
-				}
-				conn.close();
-			} catch (Exception e) {
-				e.printStackTrace();
+		ProductModel model = new ProductModel();
+		String sql = "SELECT * FROM product where productId=?";
+		try {
+			new DBConnection();
+			Connection conn = DBConnection.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) 
+			{
+				model.setProductID(rs.getInt(1));
+				model.setProductName(rs.getString(2));
+				model.setVersion(rs.getString(3));
+				model.setDescription(rs.getString(4));
+				model.setPrice(rs.getInt(5));
+				model.setColor(rs.getString(6));
+				model.setSize(rs.getString(7));
+				model.setInventory(rs.getInt(8));
+				model.setImage(rs.getString(9));
+				model.setCateID(rs.getInt(10));
+				model.setManuID(rs.getInt(11));
+				return model;
 			}
-			return null;
-			}
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}	
 	@Override
 	public List<ProductModel> findTop3() {
 		String query ="WITH a AS(\r\n"
@@ -146,8 +142,8 @@ public class ProductDAOImpl implements IProductDAO {
 		List<ProductModel> l = new ArrayList<ProductModel>();
 		try {
 			conn = new DBConnection().getConnection();
-			ps = conn.prepareStatement(query);
-			rs= ps.executeQuery();
+			PreparedStatement ps = conn.prepareStatement(query);
+			ResultSet rs= ps.executeQuery();
 			while(rs.next()) {
 				int id = rs.getInt(1);
 				String name = rs.getString(2);
@@ -166,7 +162,6 @@ public class ProductDAOImpl implements IProductDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return l;
 	}
 	@Override
@@ -183,8 +178,8 @@ public class ProductDAOImpl implements IProductDAO {
 		List<ProductModel> l = new ArrayList<ProductModel>();
 		try {
 			conn = new DBConnection().getConnection();
-			ps = conn.prepareStatement(query);
-			rs= ps.executeQuery();
+			PreparedStatement ps = conn.prepareStatement(query);
+			ResultSet rs= ps.executeQuery();
 			while(rs.next()) {
 				int id = rs.getInt(1);
 				String name = rs.getString(2);
