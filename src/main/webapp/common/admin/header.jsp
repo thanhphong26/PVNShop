@@ -1,5 +1,8 @@
-<%@  page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
 <header>
 			<!-- TOP HEADER -->
 			<div id="top-header">
@@ -27,7 +30,7 @@
 						<div class="col-md-3">
 							<div class="header-logo">
 								<a href="#" class="logo">
-									<img src="" alt="" style="max-width: 100px; max-height: 100px;">
+									<img src="   https://cdn-icons-png.flaticon.com/512/3790/3790091.png " alt="" style="max-width: 100px; max-height: 100px;">
 								</a>
 							</div>
 						</div>
@@ -41,7 +44,7 @@
 										<option value="0">Tất cả</option>
 										<option value="1">Doanh nhân</option>
 										<option value="2">Mỏng nhẹ</option>
-										<option value="2">Sinh viên - Văn phòng</option>
+										<option value="2">Sinh viên </option>
 										<option value="2">Thiết kế đồ hoạ	</option>
 									</select>
 									<input class="input" placeholder="Search here">
@@ -135,13 +138,8 @@
 				<div id="responsive-nav">
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
-						<li class="active"><a href="#">Home</a></li>
-						<li><a href="#">Hot Deals</a></li>
-						<li><a href="#">Categories</a></li>
-						<li><a href="#">Laptops</a></li>
-						<li><a href="#">Smartphones</a></li>
-						<li><a href="#">Cameras</a></li>
-						<li><a href="#">Accessories</a></li>
+				
+
 					</ul>
 					<!-- /NAV -->
 				</div>
