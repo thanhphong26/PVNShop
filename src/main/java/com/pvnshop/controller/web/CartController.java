@@ -214,6 +214,9 @@ public class CartController extends HttpServlet{
 			order.add(shipMethod);
 			order.add(shipCost);
 			session.setAttribute("order", order);
+			if(paymentMethod.contains("bank")) {
+				req.setAttribute("isBank", true);
+			}
 	        req.setAttribute("shipCost", vietnameseCurrencyFormat.format(shipCost));
 	        req.setAttribute("total", vietnameseCurrencyFormat.format(total));
 	        req.setAttribute("discount", vietnameseCurrencyFormat.format(disCost));
