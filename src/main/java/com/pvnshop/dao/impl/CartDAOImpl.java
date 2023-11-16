@@ -36,17 +36,47 @@ public class CartDAOImpl implements ICartDAO{
 	}
 
 	@Override
-	public void delete(int id) {
-		String query = "delete from cart where product_id = ?";
+	public void delete(String user, int id) {
+		String query = "delete from cart where product_id = ? and user_name = ?";
 		try {
 			Connection conn = DBConnection.getConnection();
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setInt(1, id);
+			ps.setString(2, user);
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
+	}
+
+	@Override
+	public void update(String user, int id, int quantity) {
+		String query = "update cart set quantity=? where user_name=? and product_id=?";
+		try {
+			Connection conn = DBConnection.getConnection();
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setInt(1, quantity);
+			ps.setString(2, user);
+			ps.setInt(3, id);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+
+	@Override
+	public void delete(String user) {
+		String query = "delete from cart where user_name = ?";
+		try {
+			Connection conn = DBConnection.getConnection();
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setString(1, user);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

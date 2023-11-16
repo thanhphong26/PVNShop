@@ -3,7 +3,7 @@ package com.pvnshop.service.impl;
 import java.util.List;
 
 import com.pvnshop.dao.IRateDAO;
-import com.pvnshop.dao.RateDAOImpl;
+import com.pvnshop.dao.impl.RateDAOImpl;
 import com.pvnshop.models.RateModel;
 import com.pvnshop.service.IRateService;
 

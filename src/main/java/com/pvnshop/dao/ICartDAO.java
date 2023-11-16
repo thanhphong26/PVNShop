@@ -6,5 +6,7 @@ import com.pvnshop.models.CartModel;
 
 public interface ICartDAO {
 	List<CartModel> findByUser(String user);
-	void delete(int id);
+	void delete(String user,int id);
+	void delete(String user);
+	void update(String user, int id, int quantity);
 }

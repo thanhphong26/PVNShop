@@ -13,7 +13,11 @@ import java.util.logging.Logger;
 public class DBConnection {
 	private static String DB_URL="jdbc:mysql://localhost:3306/cnpm";
 	private static String USER_NAME="root";
+<<<<<<< Updated upstream
 	private static String PASSWORD="Nguyen123.";
+=======
+	private static String PASSWORD="3011";
+>>>>>>> Stashed changes
 	private static Connection conn;
 	
 	public static Connection getConnection() throws IOException {
