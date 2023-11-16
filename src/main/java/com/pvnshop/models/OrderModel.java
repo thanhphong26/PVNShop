@@ -10,7 +10,7 @@ public class OrderModel {
 	private String note;
 	private String payment_method;
 	private String user_name;
-	private int discount_id;
+	private Integer discount_id;
 	public OrderModel(int orderID, Date time, int total, int state, String note, String payment_method,
 			String user_name, int discount_id, String shipping_method, int ship_cost) {
 		super();
