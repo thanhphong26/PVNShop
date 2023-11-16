@@ -27,6 +27,11 @@ public class ProductServiceImpl implements IProductService {
 		return pDAO.findAll();
 	}
 	@Override
+	public List<ProductModel> findTop() {
+		// TODO Auto-generated method stub
+		return pDAO.findTop();
+	}
+	@Override
 	public List<ProductModel> findProductByCate(int cateId) {
 		return pDAO.findProductByCate(cateId);
 	}
