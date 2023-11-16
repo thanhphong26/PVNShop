@@ -13,20 +13,20 @@ import java.util.logging.Logger;
 public class DBConnection {
 	private static String DB_URL="jdbc:mysql://localhost:3306/cnpm";
 	private static String USER_NAME="root";
-	private static String PASSWORD="Nghia2904@"	;
-	private static Connection con;
+	private static String PASSWORD="3011";
+	private static Connection conn;
 	
 	public static Connection getConnection() throws IOException {
-		con =null;
+		conn =null;
 		try {
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-			con = (Connection) DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
+			conn = (Connection) DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
 			
 		} catch (SQLException ex) {
 			Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE,null,ex);
 			
 		}
-		return (con);
+		return (conn);
 	}
 	public static void main(String[] args) {
 		try {

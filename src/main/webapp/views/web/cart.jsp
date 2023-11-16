@@ -103,8 +103,8 @@ input[type="submit"]:hover {
 					<td><img src="${p[3]}" width="150" height="100"></td>
 					<td>${p[1]}</td>
 					<td>${p[2]}</td>
-					<td><input type="number" name="${p[0]}sl" value="1" min="1"></td>
-					<td><a href="deleteCart"
+					<td><input type="number" name="${p[0]}" value="${p[4]}" min="1"></td>
+					<td><a href="deleteCart?id=${p[0]}"
 						style="text-decoration: none; display: inline-block;"> <span
 							style="background-color: #cc0000; color: #fff; padding: 10px 15px; border: 1px solid red; border-radius: 20px; transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;">
 								Xoá </span>
@@ -112,7 +112,7 @@ input[type="submit"]:hover {
 				</tr>
 			</c:forEach>
 		</table>
-		<input type="submit" value="Thanh toán">
+		<input type="submit" value="Mua hàng">
 	</form>
 
 </body>
