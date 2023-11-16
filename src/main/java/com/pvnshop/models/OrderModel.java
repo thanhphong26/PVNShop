@@ -71,10 +71,10 @@ public class OrderModel {
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
-	public int getDiscount_id() {
+	public Integer getDiscount_id() {
 		return discount_id;
 	}
-	public void setDiscount_id(int discount_id) {
+	public void setDiscount_id(Integer discount_id) {
 		this.discount_id = discount_id;
 	}
 	public String getShipping_method() {
