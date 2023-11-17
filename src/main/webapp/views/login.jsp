@@ -88,7 +88,7 @@ h2 {
               <div class="col-md-8 col-md-push-2">
                 <div class="aa-myaccount-register">                 
                  <h4>Đăng Nhập</h4>
-                 <h2>${error}</h2>
+                 <h2>${message}</h2>
                  <form name="formLogin" class="aa-login-form" method="post" action="login" >
                      <label for="">Username<span>*</span></label>
                     <input type="text" placeholder="Nhập tên tài khoản" name="username" required>

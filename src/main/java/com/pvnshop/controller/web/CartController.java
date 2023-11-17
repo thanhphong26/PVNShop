@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.pvnshop.dao.IDiscountDAO;
 import com.pvnshop.models.CartModel;
 import com.pvnshop.models.DiscountModel;
 import com.pvnshop.models.OrderDetailModel;
@@ -54,9 +53,9 @@ public class CartController extends HttpServlet{
 		String url = req.getRequestURI().toString();
 		if(url.contains("cart")) {
 			HttpSession session = req.getSession();
-			//String user = (String) session.getAttribute("username");
-			String user = "user01";
-			List<CartModel> list = cartS.findByUser(user);
+			UserModel user = (UserModel) session.getAttribute("account");
+			//String user = "user01";
+			List<CartModel> list = cartS.findByUser(user.getUsername());
 			List<List<Object>> obs = new ArrayList<List<Object>>();
 			for (CartModel cartModel : list) {
 				int pID= cartModel.getProductID();
@@ -79,9 +78,9 @@ public class CartController extends HttpServlet{
 		else if(url.contains("deleteCart")) {
 			int id = Integer.parseInt(req.getParameter("id"));
 			HttpSession session = req.getSession();
-			//String user = (String) session.getAttribute("username");
-			String user = "user01";
-			cartS.delete(user,id);
+			UserModel user = (UserModel) session.getAttribute("account");
+			//String user = "user01";
+			cartS.delete(user.getUsername(),id);
 			resp.sendRedirect(req.getContextPath()+"/cart");
 		}
 		else if(url.contains("capnhatdb")) {
@@ -118,15 +117,16 @@ public class CartController extends HttpServlet{
 		if(url.contains("thanhToan")) {	
 			try {
 				HttpSession session = req.getSession();
-				//String user = (String) session.getAttribute("username");
-				String user = "user01";
-				List<CartModel> list = cartS.findByUser(user);
+				UserModel user = (UserModel) session.getAttribute("account");
+				System.out.println("Helllo"+ user);
+				//String user = "user01";
+				List<CartModel> list = cartS.findByUser(user.getUsername());
 				for (CartModel cartModel : list) {
 					int pId = cartModel.getProductID();
 					String pId_str = pId + "";
 					int quantity = Integer.parseInt(req.getParameter(pId_str));
-					cartS.update(user, pId, quantity);}
-				UserModel u = uS.getOneUser(user);
+					cartS.update(user.getUsername(), pId, quantity);}
+				UserModel u = uS.getOneUser(user.getUsername());
 				List<Object> obj = new ArrayList<Object>();
 				obj.add(u.getName());
 				obj.add(u.getAddress());

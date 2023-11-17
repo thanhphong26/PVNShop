@@ -1,7 +1,9 @@
 package com.pvnshop.controller.web;
 
 import java.io.IOException;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -10,26 +12,34 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.pvnshop.models.ProductModel;
+import com.pvnshop.models.RateModel;
 import com.pvnshop.models.UserModel;
+import com.pvnshop.service.IProductService;
+import com.pvnshop.service.IRateService;
 import com.pvnshop.service.IUserService;
+import com.pvnshop.service.impl.ProductServiceImpl;
+import com.pvnshop.service.impl.RateServiceImpl;
 import com.pvnshop.service.impl.UserServiceImpl;
 import com.pvnshop.util.constant;
-@WebServlet(urlPatterns = {"/login","/register"})
+@WebServlet(urlPatterns = {"/home","/login","/register","/waiting","/logout"})
 public class HomeController extends HttpServlet{
 	private static final long serialVersionUID = -3579095519001596408L;
 	IUserService userService=new UserServiceImpl();
+	IProductService proService=new ProductServiceImpl();
+	IRateService rateService=new RateServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url=req.getRequestURI().toString();
-		if(url.contains("login")) {
+		if(url.contains("home")) {
+			top3(req, resp);
+		}
+		else if(url.contains("login")) {
 			getLogin(req, resp);
 		}else if(url.contains("waiting")){
 			getWaiting(req, resp);
 		}else if(url.contains("logout")) {
 			getLogout(req, resp);
-		}
-		else if(url.contains("home")) {
-			req.getRequestDispatcher("/views/web/home.jsp").forward(req, resp);
 		}
 		else if(url.contains("register")) {
 			req.getRequestDispatcher("/views/web/register.jsp").forward(req, resp);
@@ -55,9 +65,9 @@ public class HomeController extends HttpServlet{
 		Cookie[] cookies=req.getCookies();
 		if(cookies!=null) {
 			for(Cookie cookie: cookies) {
-				if(cookie.getName().equals("email")) {
+				if(cookie.getName().equals("user")) {
 					session=req.getSession(true);
-					session.setAttribute("email", cookie.getValue());
+					session.setAttribute("user", cookie.getValue());
 					resp.sendRedirect(req.getContextPath()+"/waiting");
 					return;
 				}
@@ -90,10 +100,11 @@ public class HomeController extends HttpServlet{
 		HttpSession session=req.getSession();
 		if(session!=null &&session.getAttribute("account")!=null) {
 			UserModel user=(UserModel) session.getAttribute("account");
+			System.out.println("hello");
 			if(user.getIsAdmin()==0) {
 				resp.sendRedirect("home");
 			}else if(user.getIsAdmin()==1) {
-				resp.sendRedirect("adminUser");
+				resp.sendRedirect("admin_page");
 			}
 		}else {
 			resp.sendRedirect("login");
@@ -115,7 +126,6 @@ public class HomeController extends HttpServlet{
 				}
 			}
 		}
-		// Redirect to the login page AFTER handling cookies and session
 		resp.sendRedirect(req.getContextPath() + "/login");
 	}
 	private void postRegister(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -146,5 +156,16 @@ public class HomeController extends HttpServlet{
 				resp.sendRedirect("login");
 			}
 		}
+	}
+	private void top3(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		List <ProductModel> i = proService.findTop3();
+		req.setAttribute("top3", i);
+		List <ProductModel> o = proService.findRateTop3();
+		req.setAttribute("topr3", o);
+		List <RateModel> e = rateService.ratetop3();
+		req.setAttribute("toprate3", e);
+		RequestDispatcher rd = req.getRequestDispatcher("/views/web/home.jsp");
+		rd.forward(req, resp);
+		
 	}
 }
