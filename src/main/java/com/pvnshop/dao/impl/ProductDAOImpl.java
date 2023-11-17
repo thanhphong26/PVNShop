@@ -99,7 +99,7 @@ public class ProductDAOImpl implements IProductDAO {
 		}
 		return count;
 	}
-}
+
 	@Override
 	public ProductModel findByID(int id){
 			ProductModel model = new ProductModel();

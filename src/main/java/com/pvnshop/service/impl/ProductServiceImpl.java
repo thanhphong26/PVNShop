@@ -23,16 +23,11 @@ public class ProductServiceImpl implements IProductService {
 		return pDAO.findByID(id);
 	}
 	@Override
-	public List<ProductModel> findAll() {
-		return pDAO.findAll();
-	}
-	@Override
-	public List<ProductModel> findProductByCate(int cateId) {
-		return pDAO.findProductByCate(cateId);
-	}
-
-	@Override
 	public int CountProductByCate(int cateId) {
 		return pDAO.CountProductByCate(cateId);
+	}
+	@Override
+	public List<ProductModel> findall() {
+		return pDAO.findAll();
 	}
 }
