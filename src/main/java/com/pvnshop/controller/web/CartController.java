@@ -209,7 +209,7 @@ public class CartController extends HttpServlet{
 			order.add(0);
 			order.add(note);
 			order.add(paymentMethod);
-			order.add(user);
+			order.add(user.getUsername());
 			order.add(discountID);
 			order.add(shipMethod);
 			order.add(shipCost);
