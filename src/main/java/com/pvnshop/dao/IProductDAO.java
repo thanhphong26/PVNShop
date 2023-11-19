@@ -12,4 +12,6 @@ public interface IProductDAO {
 	ProductModel findByID(int id);
  	List<ProductModel> findProductByCate(int cateId);
 	int CountProductByCate(int cateId);
+	List<ProductModel> sortPriceLowtoHigh();
+	List<ProductModel> sortPriceHightoLow();
 }

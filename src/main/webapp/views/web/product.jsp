@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
 
 <!-- BREADCRUMB -->
-		<div id="breadcrumb" class="section">
+<div id="breadcrumb" class="section">
+    <div id="breadcrumb" class="section">
 			<!-- container -->
 			<div class="container">
 				<!-- row -->
@@ -21,15 +21,14 @@
 			</div>
 			<!-- /container -->
 		</div>
-		<!-- /BREADCRUMB -->
+</div>
+<!-- /BREADCRUMB -->
 
-		<!-- SECTION -->
-		<div class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<!-- ASIDE -->
+<!-- SECTION -->
+<div class="section">
+    <div class="container">
+        <div class="row">
+           <!-- ASIDE -->
 					<div id="aside" class="col-md-3">
 						<!-- aside Widget -->
 						<div class="aside">
@@ -91,6 +90,8 @@
 								</div>
 							</div>
 						</div>
+						<!-- /aside Widget -->
+
 						<!-- aside Widget -->
 						<div class="aside">
 							<h3 class="aside-title">Price</h3>
@@ -123,86 +124,159 @@
 										<small>(578)</small>
 									</label>
 								</div>
+								<div class="input-checkbox">
+									<input type="checkbox" id="brand-2">
+									<label for="brand-2">
+										<span></span>
+										LG
+										<small>(125)</small>
+									</label>
+								</div>
+								<div class="input-checkbox">
+									<input type="checkbox" id="brand-3">
+									<label for="brand-3">
+										<span></span>
+										SONY
+										<small>(755)</small>
+									</label>
+								</div>
+								<div class="input-checkbox">
+									<input type="checkbox" id="brand-4">
+									<label for="brand-4">
+										<span></span>
+										SAMSUNG
+										<small>(578)</small>
+									</label>
+								</div>
+								<div class="input-checkbox">
+									<input type="checkbox" id="brand-5">
+									<label for="brand-5">
+										<span></span>
+										LG
+										<small>(125)</small>
+									</label>
+								</div>
+								<div class="input-checkbox">
+									<input type="checkbox" id="brand-6">
+									<label for="brand-6">
+										<span></span>
+										SONY
+										<small>(755)</small>
+									</label>
+								</div>
 							</div>
 						</div>
+						<!-- /aside Widget -->
+
+						<!-- aside Widget -->
+						<div class="aside">
+							<h3 class="aside-title">Top selling</h3>
+							<div class="product-widget">
+								<div class="product-img">
+									<img src="${i.image}" alt="">
+								</div>
+								<div class="product-body">
+									<c:forEach var="i" items="${top3}">
+									<h3 class="product-name"><a href="#">${i.productName }</a></h3>
+									<h4 class="product-price">${i.price}</h4>
+									</c:forEach>
+								</div>
+							</div>
+						</div>
+						<!-- /aside Widget -->
 					</div>
 					<!-- /ASIDE -->
 
-					<!-- STORE -->
-					<div id="store" class="col-md-9">
-						<!-- store top filter -->
-						<div class="store-filter clearfix">
-							<div class="store-sort">
-								<label>
-									Sort By:
-									<select class="input-select">
-										<option value="0">Popular</option>
-										<option value="1">Position</option>
-									</select>
-								</label>
+            <!-- STORE -->
+            <div id="store" class="col-md-9">
+                <!-- store top filter -->
+                <div class="store-filter clearfix">
+                    <div class="store-sort">
+                        <label>
+                            Sort By:
+                            <select class="input-select" id="sort">
+                            	<option hidden></option>
+                                <option value="0">Giá từ thấp đến cao</option>
+                                <option value="1">Giá từ cao đến thấp</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <!-- /store top filter -->
 
-								<label>
-									Show:
-									<select class="input-select">
-										<option value="0">20</option>
-										<option value="1">50</option>
-									</select>
-								</label>
-							</div>
-							<ul class="store-grid">
-								<li class="active"><i class="fa fa-th"></i></li>
-								<li><a href="#"><i class="fa fa-th-list"></i></a></li>
-							</ul>
-						</div>
-						<!-- /store top filter -->
-						<!-- store products -->
-						
-						<div class="row">
-							<c:forEach var="i" items="${listProduct}">
-								<div class="col-md-4 col-xs-6">
-									<div class="product">
-										<div class="product-img">
-											<img src="${i.image}" alt="Ảnh sản phẩm">
-											<div class="product-label">
-												<span class="sale">-30%</span>
-												<span class="new">NEW</span>
-											</div>
-										</div>
-										<div class="product-body">
-											<p class="product-category">Category</p>
-											<h3 class="product-name"><a href="product-detail?id=${i.productID}">${i.productName}</a></h3>
-											<h4 class="product-price">${i.price}</h4>
-											<div class="product-btns">
-												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-												<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-											</div>
-										</div>
-										<div class="add-to-cart">
-											<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-										</div>
-									</div>
-								</div>
-							<div class="clearfix visible-sm visible-xs"></div>	<!-- /product -->
-						</c:forEach>
-						</div>
-						
-						<!-- /store products -->
-						<!-- store bottom filter -->
-						<div class="store-filter clearfix">
-							<span class="store-qty">Showing 20-100 products</span>
-							<ul class="store-pagination">
-								<li class="active">1</li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-							</ul>
-						</div>
-						<!-- /store bottom filter -->
+                <!-- store products -->
+                <div class="row" id="product-list">
+                    <div class="row">
+					    <c:forEach var="i" items="${listProduct}">
+					        <div class="col-md-4 col-xs-6 product-item">
+					            <div class="product">
+					                <div class="product-img">
+					                    <img src="${i.image}" alt="Ảnh sản phẩm">
+					                    <div class="product-label">
+					                        <span class="sale">-30%</span>
+					                        <span class="new">NEW</span>
+					                    </div>
+					                </div>
+					                <div class="product-body">
+					                    <p class="product-category">Category</p>
+					                    <h3 class="product-name"><a href="product-detail?id=${i.productID}">${i.productName}</a></h3>
+					                    <h4 class="product-price">${i.price}</h4>
+					                    <div class="product-btns">
+					                        <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+					                        <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+					                    </div>
+					                </div>
+					                <div class="add-to-cart">
+					                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+					                </div>
+					            </div>
+					        </div>
+					    </c:forEach>
 					</div>
-					<!-- /STORE -->
-				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
+                </div>
+                <!-- /store products -->
+
+                <!-- store bottom filter -->
+                <div class="store-filter clearfix">
+                    <span class="store-qty">Showing 20-100 products</span>
+                    <ul class="store-pagination">
+                        <li class="active">1</li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                    </ul>
+                </div>
+                <!-- /store bottom filter -->
+            </div>
+            <!-- /STORE -->
+        </div>
+    </div>
+</div>
+<!-- /SECTION -->
+
+<script>
+    document.getElementById('sort').addEventListener('change', function() {
+        var selectedValue = this.value;
+        var products = document.querySelectorAll('.product-item');
+        var sortedProducts = Array.from(products);
+
+        sortedProducts.sort(function(a, b) {
+            var priceA = parseFloat(a.querySelector('.product-price').innerText.replace(/\D/g,'')); // Lấy giá và loại bỏ ký tự không phải số
+            var priceB = parseFloat(b.querySelector('.product-price').innerText.replace(/\D/g,'')); // Lấy giá và loại bỏ ký tự không phải số
+
+            if (selectedValue === '1') { // Nếu lựa chọn là giá cao đến thấp
+                return priceB - priceA;
+            } else { // Mặc định, sắp xếp từ thấp đến cao
+                return priceA - priceB;
+            }
+        });
+
+        var container = document.getElementById('product-list');
+        container.innerHTML = ''; // Xóa danh sách hiện tại
+
+        sortedProducts.forEach(function(product) {
+            container.appendChild(product); // Thêm sản phẩm đã sắp xếp vào container
+        });
+    });
+</script>

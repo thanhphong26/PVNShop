@@ -40,4 +40,12 @@ public class ProductServiceImpl implements IProductService {
 	public int CountProductByCate(int cateId) {
 		return pDAO.CountProductByCate(cateId);
 	}
+	@Override
+	public List<ProductModel> sortPriceLowtoHigh() {
+		return pDAO.sortPriceLowtoHigh();
+	}
+	@Override
+	public List<ProductModel> sortPriceHightoLow() {
+		return pDAO.sortPriceHightoLow();
+	}
 }
