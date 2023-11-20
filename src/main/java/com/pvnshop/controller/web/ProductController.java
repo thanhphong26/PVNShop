@@ -54,6 +54,7 @@ public class ProductController extends HttpServlet {
 		
 		//req.setAttribute("listProduct", listProduct);
 		req.setAttribute("listCate", listCategory);
+		req.setAttribute("setactive", cateID);
 		req.setAttribute("bestSellerProduct", bestSellerProduct);
 		req.setAttribute("lastestProduct", lastestProduct);
 		req.getRequestDispatcher("/views/web/product.jsp").forward(req, resp);
