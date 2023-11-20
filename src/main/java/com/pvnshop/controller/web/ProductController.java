@@ -4,17 +4,13 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.pvnshop.dao.ICategoryDAO;
-import com.pvnshop.models.CartModel;
 import com.pvnshop.models.CategoryModel;
 import com.pvnshop.models.ProductModel;
 import com.pvnshop.models.RateModel;
@@ -36,6 +32,8 @@ public class ProductController extends HttpServlet {
 	IRateService rateService = new RateServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
 		String url = req.getRequestURI().toString();
 		if(url.contains("product")) {
 			findAll(req, resp);
@@ -50,6 +48,8 @@ public class ProductController extends HttpServlet {
 	}	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
 		String url = req.getRequestURI().toString();
 		String productID = "1";
 		if(url.contains("addReview")) {
