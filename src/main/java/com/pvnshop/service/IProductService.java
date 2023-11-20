@@ -10,8 +10,9 @@ public interface IProductService {
 	List<ProductModel> findAll();
 	List<ProductModel> findTop();
 	ProductModel findByID(int id);
-	List<ProductModel> findProductByCate(int cateId);
+	List<ProductModel> findProductByCate(String cateId);
 	int CountProductByCate(int cateId);
 	List<ProductModel> sortPriceLowtoHigh();
 	List<ProductModel> sortPriceHightoLow();
+	ProductModel getLastestProduct();
 }

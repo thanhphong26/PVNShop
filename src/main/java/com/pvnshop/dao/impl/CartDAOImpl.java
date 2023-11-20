@@ -79,4 +79,19 @@ public class CartDAOImpl implements ICartDAO{
 		}
 	}
 
+	@Override
+	public void insert(CartModel cart) {
+		String sql="insert into cart values (?,?,?)";
+		try {
+			Connection conn=DBConnection.getConnection();
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setString(1, cart.getUsername());
+			ps.setInt(2, cart.getProductID());
+			ps.setInt(3, cart.getQuantity());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }

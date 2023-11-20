@@ -46,14 +46,14 @@ public class ProductDAOImpl implements IProductDAO {
 		return list;
 	}
 	@Override
-	public List<ProductModel> findProductByCate(int cateId) {
+	public List<ProductModel> findProductByCate(String cateId) {
 		String sql = "Select * from product where cate_id = ?";
 		List<ProductModel> list = new ArrayList<ProductModel>();
 		try {
 			new DBConnection();
 			conn = DBConnection.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, cateId);
+			ps.setString(1, cateId);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				ProductModel model = new ProductModel();
@@ -297,5 +297,32 @@ public class ProductDAOImpl implements IProductDAO {
 			e.printStackTrace();
 		}
 		return list;
+  }
+  @Override
+	public ProductModel getLastestProduct() {
+		String sql="select * from product order by productId desc limit 1";
+		ProductModel product =new ProductModel();
+		try {
+			Connection conn=new DBConnection().getConnection();
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()) {
+				product.setProductID(rs.getInt(1));
+				product.setProductName(rs.getString(2));
+				product.setVersion(rs.getString(3));
+				product.setDescription(rs.getString(4));
+				product.setPrice(rs.getInt(5));
+				product.setColor(rs.getString(6));
+				product.setSize(rs.getString(7));
+				product.setInventory(rs.getInt(8));
+				product.setImage(rs.getString(9));
+				product.setCateID(rs.getInt(10));
+				product.setManuID(rs.getInt(11));
+				return product;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

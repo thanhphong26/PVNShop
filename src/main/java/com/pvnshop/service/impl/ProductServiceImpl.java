@@ -32,7 +32,7 @@ public class ProductServiceImpl implements IProductService {
 		return pDAO.findTop();
 	}
 	@Override
-	public List<ProductModel> findProductByCate(int cateId) {
+	public List<ProductModel> findProductByCate(String cateId) {
 		return pDAO.findProductByCate(cateId);
 	}
 
@@ -47,5 +47,8 @@ public class ProductServiceImpl implements IProductService {
 	@Override
 	public List<ProductModel> sortPriceHightoLow() {
 		return pDAO.sortPriceHightoLow();
+  @Override
+	public ProductModel getLastestProduct() {
+		return pDAO.getLastestProduct();
 	}
 }

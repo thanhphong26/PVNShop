@@ -40,12 +40,25 @@ public class ProductController extends HttpServlet {
 	
 		
 	private void findAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String cateID=req.getParameter("id");
 		List<ProductModel> listProduct=productService.findAll();
 		List<CategoryModel> listCategory=cateService.findAll();
 		List <ProductModel> i = productService.findTop3();
 		req.setAttribute("top3", i);
 		req.setAttribute("listProduct", listProduct);
+		List<ProductModel> listProductByCategory=productService.findProductByCate(cateID);
+		List<ProductModel> bestSellerProduct=productService.findTop3();
+		ProductModel lastestProduct=productService.getLastestProduct();
+		if(cateID==null) {
+			req.setAttribute("listProduct", listProduct);
+		}else {
+			req.setAttribute("listProduct",  listProductByCategory);
+		}
+		
+		//req.setAttribute("listProduct", listProduct);
 		req.setAttribute("listCate", listCategory);
+		req.setAttribute("bestSellerProduct", bestSellerProduct);
+		req.setAttribute("lastestProduct", lastestProduct);
 		req.getRequestDispatcher("/views/web/product.jsp").forward(req, resp);
 
 	}

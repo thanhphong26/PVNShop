@@ -160,8 +160,8 @@ public class CartController extends HttpServlet{
 			}
 		else if(url.contains("xacnhanthanhtoan")) {
 			HttpSession session = req.getSession();
+			UserModel user = (UserModel) session.getAttribute("account");
 			//String user = (String) session.getAttribute("username");
-			String user = "user01";
 			String shipMethod = req.getParameter("shipMethod");
 			String paymentMethod = req.getParameter("paymentMethod");
 			String note = req.getParameter("note");
@@ -176,7 +176,7 @@ public class CartController extends HttpServlet{
 				shipCost = 30000;
 			}
 			int total = shipCost;
-			List<CartModel> list = cartS.findByUser(user);
+			List<CartModel> list = cartS.findByUser(user.getUsername());
 			List<List<Object>> obs = new ArrayList<List<Object>>();
 			Locale vietnameseLocale = new Locale("vi", "VN");
 	        NumberFormat vietnameseCurrencyFormat = NumberFormat.getCurrencyInstance(vietnameseLocale);
@@ -209,7 +209,7 @@ public class CartController extends HttpServlet{
 			order.add(0);
 			order.add(note);
 			order.add(paymentMethod);
-			order.add(user);
+			order.add(user.getUsername());
 			order.add(discountID);
 			order.add(shipMethod);
 			order.add(shipCost);
