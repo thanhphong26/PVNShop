@@ -39,6 +39,7 @@ public class ProductController extends HttpServlet {
 		List<CategoryModel> listCategory=cateService.findAll();
 		req.setAttribute("listProduct", listProduct);
 		req.setAttribute("listCate", listCategory);
+		req.setAttribute("count", listProduct.size());
 		req.getRequestDispatcher("/views/web/product.jsp").forward(req, resp);
 	}
 }
