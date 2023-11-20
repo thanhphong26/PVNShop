@@ -27,6 +27,7 @@ public class CategoryDAOImpl implements ICategoryDAO{
 				CategoryModel model = new CategoryModel();
 				model.setCateID(rs.getInt(1));
 				model.setCateName(rs.getString(2));
+				listCate.add(model);
 			}
 			conn.close();
 		} catch (Exception e) {
@@ -34,5 +35,4 @@ public class CategoryDAOImpl implements ICategoryDAO{
 		}
 		return listCate;
 	}
-
 }
