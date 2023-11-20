@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
 <!-- BREADCRUMB -->
-		<div id="breadcrumb" class="section">
+<div id="breadcrumb" class="section">
+    <div id="breadcrumb" class="section">
 			<!-- container -->
 			<div class="container">
 				<!-- row -->
@@ -19,15 +19,14 @@
 			</div>
 			<!-- /container -->
 		</div>
-		<!-- /BREADCRUMB -->
+</div>
+<!-- /BREADCRUMB -->
 
-		<!-- SECTION -->
-		<div class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<!-- ASIDE -->
+<!-- SECTION -->
+<div class="section">
+    <div class="container">
+        <div class="row">
+           <!-- ASIDE -->
 					<div id="aside" class="col-md-3">
 						<!-- aside Widget -->
 						<div class="aside">
@@ -62,6 +61,7 @@
 						<div class="aside">
 							<h3 class="aside-title">Sản phẩm nổi bật</h3>
 							<div class="checkbox-filter">
+
 								<div class="card bg-light mb-3">
 						            <div class="product">
 						                <div class="product-img">
@@ -83,9 +83,6 @@
 						        </div>
 							</div>
 						</div>
-					</div>
-					<!-- /ASIDE -->
-
 					<!-- STORE -->
 					<div id="store" class="col-md-9">
 						
@@ -156,9 +153,52 @@
 						</div>
 						<!-- /store bottom filter -->
 					</div>
-					<!-- /STORE -->
-				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
+					<!-- /ASIDE -->
+
+            <!-- STORE -->
+            <div id="store" class="col-md-9">
+                <!-- store top filter -->
+                <div class="store-filter clearfix">
+                    <div class="store-sort">
+                        <label>
+                            Sort By:
+                            <select class="input-select" id="sort">
+                            	<option hidden></option>
+                                <option value="0">Giá từ thấp đến cao</option>
+                                <option value="1">Giá từ cao đến thấp</option>
+                            </select>
+                        </label>
+                    </div>
+              </div>
+            </div>
+            <!-- /STORE -->
+        </div>
+    </div>
+</div>
+<!-- /SECTION -->
+
+<script>
+    document.getElementById('sort').addEventListener('change', function() {
+        var selectedValue = this.value;
+        var products = document.querySelectorAll('.product-item');
+        var sortedProducts = Array.from(products);
+
+        sortedProducts.sort(function(a, b) {
+            var priceA = parseFloat(a.querySelector('.product-price').innerText.replace(/\D/g,'')); // Lấy giá và loại bỏ ký tự không phải số
+            var priceB = parseFloat(b.querySelector('.product-price').innerText.replace(/\D/g,'')); // Lấy giá và loại bỏ ký tự không phải số
+
+            if (selectedValue === '1') { // Nếu lựa chọn là giá cao đến thấp
+                return priceB - priceA;
+            } else { // Mặc định, sắp xếp từ thấp đến cao
+                return priceA - priceB;
+            }
+        });
+
+        var container = document.getElementById('product-list');
+        container.innerHTML = ''; // Xóa danh sách hiện tại
+
+        sortedProducts.forEach(function(product) {
+            container.appendChild(product); // Thêm sản phẩm đã sắp xếp vào container
+        });
+    });
+</script>

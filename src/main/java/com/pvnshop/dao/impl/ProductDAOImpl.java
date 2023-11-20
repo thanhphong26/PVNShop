@@ -239,6 +239,66 @@ public class ProductDAOImpl implements IProductDAO {
 		return l;
 	}
 	@Override
+	public List<ProductModel> sortPriceHightoLow() {
+		String sql = "Select * from product order by price desc";
+		List<ProductModel> list = new ArrayList<ProductModel>();
+		try {
+			new DBConnection();
+			conn = DBConnection.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery(sql);
+			while (rs.next()) {
+				ProductModel model = new ProductModel();
+				model.setProductID(rs.getInt("productId"));
+				model.setProductName(rs.getString("productName"));
+				model.setVersion(rs.getString("version"));
+				model.setDescription(rs.getString("description"));
+				model.setPrice(rs.getInt("price"));
+				model.setColor(rs.getString("color"));
+				model.setSize(rs.getString("size"));
+				model.setInventory(rs.getInt("inventory"));
+				model.setImage(rs.getString("image"));
+				model.setCateID(rs.getInt("cate_id"));
+				model.setManuID(rs.getInt("manu_id"));
+				list.add(model);
+			}
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	@Override
+	public List<ProductModel> sortPriceLowtoHigh() {
+		String sql = "Select * from product order by price asc";
+		List<ProductModel> list = new ArrayList<ProductModel>();
+		try {
+			new DBConnection();
+			conn = DBConnection.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery(sql);
+			while (rs.next()) {
+				ProductModel model = new ProductModel();
+				model.setProductID(rs.getInt("productId"));
+				model.setProductName(rs.getString("productName"));
+				model.setVersion(rs.getString("version"));
+				model.setDescription(rs.getString("description"));
+				model.setPrice(rs.getInt("price"));
+				model.setColor(rs.getString("color"));
+				model.setSize(rs.getString("size"));
+				model.setInventory(rs.getInt("inventory"));
+				model.setImage(rs.getString("image"));
+				model.setCateID(rs.getInt("cate_id"));
+				model.setManuID(rs.getInt("manu_id"));
+				list.add(model);
+			}
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+  }
+  @Override
 	public ProductModel getLastestProduct() {
 		String sql="select * from product order by productId desc limit 1";
 		ProductModel product =new ProductModel();

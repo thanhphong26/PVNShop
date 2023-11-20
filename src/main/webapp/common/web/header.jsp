@@ -47,21 +47,21 @@
 						<!-- /LOGO -->
 
 						<!-- SEARCH BAR -->
-						<div class="col-md-6">
-							<div class="header-search">
-								<form>
-									<select class="input-select">
-										<option value="0">Tất cả</option>
-										<option value="1">Doanh nhân</option>
-										<option value="2">Mỏng nhẹ</option>
-										<option value="2">Sinh viên</option>
-										<option value="2">Thiết kế đồ hoạ</option>
-									</select>
-									<input class="input" placeholder="Search here">
-									<button class="search-btn">Tìm kiếm</button>
-								</form>
-							</div>
-						</div>
+								<div class="col-md-6">
+								    <div class="header-search">
+								        <form action="search" method="get">
+								            <select class="input-select">
+								                <option value="0">Tất cả</option>
+								                <option value="1">Doanh nhân</option>
+								                <option value="2">Mỏng nhẹ</option>
+								                <option value="3">Sinh viên</option>
+								                <option value="4">Thiết kế đồ hoạ</option>
+								            </select>
+								            <input name="txt" class="input" placeholder="Search here">
+								            <button type="submit" class="search-btn">Tìm kiếm</button>
+								        </form>
+								    </div>
+								</div>
 						<!-- /SEARCH BAR -->
 
 						<!-- ACCOUNT -->

@@ -12,5 +12,7 @@ public interface IProductService {
 	ProductModel findByID(int id);
 	List<ProductModel> findProductByCate(String cateId);
 	int CountProductByCate(int cateId);
+	List<ProductModel> sortPriceLowtoHigh();
+	List<ProductModel> sortPriceHightoLow();
 	ProductModel getLastestProduct();
 }
