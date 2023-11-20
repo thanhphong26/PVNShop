@@ -21,7 +21,6 @@ import com.pvnshop.service.IRateService;
 import com.pvnshop.service.impl.CartServiceImpl;
 import com.pvnshop.service.impl.CategoryServiceImpl;
 import com.pvnshop.service.impl.ProductServiceImpl;
-import com.pvnshop.service.impl.RateServiceImpl;
 
 @WebServlet(urlPatterns =  {"/product","/product-detail"})
 public class ProductController extends HttpServlet {
@@ -36,9 +35,7 @@ public class ProductController extends HttpServlet {
 			findAll(req, resp);
 			
 		}
-	}
-	
-		
+	}	
 	private void findAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String cateID=req.getParameter("id");
 		List<ProductModel> listProduct=productService.findAll();

@@ -99,11 +99,12 @@
 		              </div>
 		            </div>
 					<!-- STORE -->
+					<h5>Các sản phẩm liên quan đến từ khóa </h5>
 					<div id="store" class="col-md-9">
 						
 						<!-- store products -->					
 						<div class="row">
-						    <c:forEach var="i" items="${listProduct}">
+						    <c:forEach var="i" items="${listSearch}">
 						        <div class="col-md-4 col-xs-6">
 						            <div class="product">
 						                <div class="product-img">
@@ -195,7 +196,6 @@
 		</script>
     </div>
 
-</div>
 </div>
 <!-- /SECTION -->
 

@@ -12,22 +12,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.pvnshop.models.CategoryModel;
 import com.pvnshop.models.ProductModel;
 import com.pvnshop.models.RateModel;
 import com.pvnshop.models.UserModel;
+import com.pvnshop.service.ICartService;
+import com.pvnshop.service.ICategoryService;
 import com.pvnshop.service.IProductService;
 import com.pvnshop.service.IRateService;
+import com.pvnshop.service.ISearchService;
 import com.pvnshop.service.IUserService;
+import com.pvnshop.service.impl.CategoryServiceImpl;
 import com.pvnshop.service.impl.ProductServiceImpl;
 import com.pvnshop.service.impl.RateServiceImpl;
+import com.pvnshop.service.impl.SearchServiceImpl;
 import com.pvnshop.service.impl.UserServiceImpl;
 import com.pvnshop.util.constant;
-@WebServlet(urlPatterns = {"/home","/login","/register","/waiting","/logout"})
+@WebServlet(urlPatterns = {"/home","/login","/register","/waiting","/logout","/search"})
 public class HomeController extends HttpServlet{
 	private static final long serialVersionUID = -3579095519001596408L;
 	IUserService userService=new UserServiceImpl();
 	IProductService proService=new ProductServiceImpl();
 	IRateService rateService=new RateServiceImpl();
+	ISearchService searchService=new SearchServiceImpl();
+	ICategoryService cateService=new CategoryServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url=req.getRequestURI().toString();
@@ -43,6 +51,8 @@ public class HomeController extends HttpServlet{
 		}
 		else if(url.contains("register")) {
 			req.getRequestDispatcher("/views/web/register.jsp").forward(req, resp);
+		}else if(url.contains("search")) {
+			searchByName(req, resp);
 		}
 	}
 	@Override
@@ -167,5 +177,18 @@ public class HomeController extends HttpServlet{
 		RequestDispatcher rd = req.getRequestDispatcher("/views/web/home.jsp");
 		rd.forward(req, resp);
 		
+	}
+	private void searchByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String txtsearch=req.getParameter("txt");
+		List<ProductModel> listSearch=searchService.searchByName(txtsearch);
+		List<ProductModel> bestSellerProduct=proService.findTop3();
+		ProductModel lastestProduct=proService.getLastestProduct();
+		List<CategoryModel> listCategory=cateService.findAll();
+
+		req.setAttribute("listCate", listCategory);
+		req.setAttribute("listSearch", listSearch);
+		req.setAttribute("bestSellerProduct", bestSellerProduct);
+		req.setAttribute("lastestProduct", lastestProduct);
+		req.getRequestDispatcher("/views/web/product-search.jsp").forward(req, resp);
 	}
 }
