@@ -170,7 +170,7 @@
 										</div>
 										<div class="product-body">
 											<p class="product-category">Category</p>
-											<h3 class="product-name"><a href="product-detail?id=${i.productID}">${i.productName}</a></h3>
+											<h3 class="product-name"><a href="detailProduct?id=${i.productID}">${i.productName}</a></h3>
 											<h4 class="product-price">${i.price}</h4>
 											<div class="product-btns">
 												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
