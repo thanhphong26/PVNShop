@@ -6,4 +6,5 @@ import com.pvnshop.models.CategoryModel;
 
 public interface ICategoryService {
 	List<CategoryModel> findAll();
+	CategoryModel findById(int proId);
 }

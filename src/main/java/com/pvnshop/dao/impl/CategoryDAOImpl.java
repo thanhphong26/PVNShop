@@ -35,4 +35,24 @@ public class CategoryDAOImpl implements ICategoryDAO{
 		}
 		return listCate;
 	}
+	@Override
+	public CategoryModel findById(int proId) {
+		String sql = "Select * from category where cateId ="+proId;
+		CategoryModel model = new CategoryModel();
+		try {
+			new DBConnection();
+			conn = DBConnection.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery(sql);
+			while (rs.next()) {		
+				model.setCateID(rs.getInt(1));
+				model.setCateName(rs.getString(2));
+				return model;
+			}
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

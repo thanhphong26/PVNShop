@@ -13,5 +13,10 @@ public class CategoryServiceImpl implements ICategoryService{
 	public List<CategoryModel> findAll() {
 		return cateDAO.findAll();
 	}
+	@Override
+	public CategoryModel findById(int proId) {
+		// TODO Auto-generated method stub
+		return cateDAO.findById(proId);
+	}
 
 }

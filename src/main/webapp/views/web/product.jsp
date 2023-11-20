@@ -50,7 +50,7 @@
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="product-detail?id=${i.productID}">${i.productName}</a></h3>
+										<h3 class="product-name"><a href="detailProduct?id=${i.productID}">${i.productName}</a></h3>
 										<h4 class="product-price">${i.price-100} <del class="product-old-price">${i.price}</del></h4>
 									</div>
 									</div>
@@ -71,7 +71,7 @@
 							                </div>
 							                <div class="product-body">
 							                    <p class="product-category">Category</p>
-							                    <h3 class="product-name"><a href="product-detail?id=${lastestProduct.productID}">${lastestProduct.productName}</a></h3>
+							                    <h3 class="product-name"><a href="detailProduct?id=${lastestProduct.productID}">${lastestProduct.productName}</a></h3>
 												<h4 class="product-price">${i.price-1000000} <del class="product-old-price">${i.price}</del></h4>
 							                	<h5 class="product-size">Khối lượng: ${lastestProduct.size} kg</h5>
 							                </div>
@@ -114,7 +114,7 @@
 						                </div>
 						                <div class="product-body">
 						                    <p class="product-category">Category</p>
-						                    <h3 class="product-name"><a href="product-detail?id=${i.productID}">${i.productName}</a></h3>
+						                    <h3 class="product-name"><a href="detailProduct?id=${i.productID}">${i.productName}</a></h3>
 						                    <h4 class="product-price">${i.price-100} VND</h4>
 									    	<h5 class="product-size">Khối lượng: ${i.size} kg</h5>
 						                </div>

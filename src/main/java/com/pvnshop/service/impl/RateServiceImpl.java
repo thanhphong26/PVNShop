@@ -14,5 +14,20 @@ public class RateServiceImpl implements IRateService {
 		// TODO Auto-generated method stub
 		return ra.ratetop3();
 	}
+	@Override
+	public List<RateModel> findById(int proId) {
+		// TODO Auto-generated method stub
+		return ra.findById(proId);
+	}
+	@Override
+	public int countAll(int proId) {
+		// TODO Auto-generated method stub
+		return ra.countAll(proId);
+	}
+	@Override
+	public void insert(RateModel model) {
+		ra.insert(model);
+		
+	}
 
 }
