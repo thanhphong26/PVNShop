@@ -14,7 +14,16 @@
 					</ul>
 					<ul class="header-links pull-right">
 						<li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-						<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+						<c:choose>
+							<c:when test="${sessionScope.account == null}">
+								<li><a href="login"><i class="fa fa-user-o"></i> Đăng Nhập/Đăng Ký</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="nav-item"><a class="nav-link" href="#">${sessionScope.account.name}</a>
+								<li class="nav-item"><a class="nav-link"
+									href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
+							</c:otherwise>
+						</c:choose>
 					</ul>
 				</div>
 			</div>
@@ -34,90 +43,14 @@
 								</a>
 							</div>
 						</div>
-						<!-- /LOGO -->
-
-						<!-- SEARCH BAR -->
-						<div class="col-md-6">
-							<div class="header-search">
-								<form>
-									<select class="input-select">
-										<option value="0">Tất cả</option>
-										<option value="1">Doanh nhân</option>
-										<option value="2">Mỏng nhẹ</option>
-										<option value="2">Sinh viên </option>
-										<option value="2">Thiết kế đồ hoạ	</option>
-									</select>
-									<input class="input" placeholder="Search here">
-									<button class="search-btn">Search</button>
-								</form>
+						<div class="col-md-3">
+							<div class="header-logo">
+								<a href="#" class="logo">
+									<img src=" https://scontent.fsgn8-4.fna.fbcdn.net/v/t39.30808-6/402055637_304358942504547_7059836029533435256_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFrNwb9wPoR3RytavM4A-buMN1KH-10yR4w3Uof7XTJHo7Gy8EG7jruRn1IEMTQrZsqehY8AyOUS3MuvoJ3_zuC&_nc_ohc=vBtpH1GUiUgAX924rnC&_nc_ht=scontent.fsgn8-4.fna&oh=00_AfCXDb_7Dxk1-epvhNwFl7T6FLXtQSn1N5pr7aQGGZW9yA&oe=6561843D" alt="" style="max-width: 1000px; max-height: 1000px;">
+								</a>
 							</div>
 						</div>
-						<!-- /SEARCH BAR -->
-
-						<!-- ACCOUNT -->
-						<div class="col-md-3 clearfix">
-							<div class="header-ctn">
-								<!-- Wishlist -->
-								<div>
-									<a href="#">
-										<i class="fa fa-heart-o"></i>
-										<span>Your Wishlist</span>
-										<div class="qty">2</div>
-									</a>
-								</div>
-								<!-- /Wishlist -->
-
-								<!-- Cart -->
-								<div class="dropdown">
-									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-										<i class="fa fa-shopping-cart"></i>
-										<span>Your Cart</span>
-										<div class="qty">3</div>
-									</a>
-									<div class="cart-dropdown">
-										<div class="cart-list">
-											<div class="product-widget">
-												<div class="product-img">
-													<img src="./img/product01.png" alt="">
-												</div>
-												<div class="product-body">
-													<h3 class="product-name"><a href="#">product name goes here</a></h3>
-													<h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-												</div>
-												<button class="delete"><i class="fa fa-close"></i></button>
-											</div>
-
-											<div class="product-widget">
-												<div class="product-img">
-													<img src="./img/product02.png" alt="">
-												</div>
-												<div class="product-body">
-													<h3 class="product-name"><a href="#">product name goes here</a></h3>
-													<h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
-												</div>
-												<button class="delete"><i class="fa fa-close"></i></button>
-											</div>
-										</div>
-										<div class="cart-summary">
-											<small>3 Item(s) selected</small>
-											<h5>SUBTOTAL: $2940.00</h5>
-										</div>
-										<div class="cart-btns">
-											<a href="#">View Cart</a>
-											<a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
-										</div>
-									</div>
-								</div>
-								<!-- /Cart -->
-
-								<!-- Menu Toogle -->
-								<div class="menu-toggle">
-									<a href="#">
-										<i class="fa fa-bars"></i>
-										<span>Menu</span>
-									</a>
-								</div>
-								<!-- /Menu Toogle -->
+						<!-- /LOGO -->
 							</div>
 						</div>
 						<!-- /ACCOUNT -->

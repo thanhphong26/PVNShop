@@ -40,4 +40,66 @@ public class RateDAOImpl implements IRateDAO {
 		return l;
 	}
 
+	@Override
+	public int countAll(int proId) {
+		String sql = "SELECT count(*) FROM rate where product_id = " + proId;
+		try {
+			new DBConnection();
+			Connection conn = DBConnection.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery(sql);
+			while(rs.next()) 
+			{
+				return rs.getInt(1);
+			}
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public List<RateModel> findById(int proId) {
+		String sql = "SELECT * FROM rate where product_id = " + proId;
+		List<RateModel> list = new ArrayList<RateModel>();
+		try {
+			new DBConnection();
+			Connection conn = DBConnection.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery(sql);
+			while(rs.next()) 
+			{
+				RateModel model = new RateModel();
+				model.setRateID(rs.getInt(1));
+				model.setContext(rs.getString(2));
+				model.setProductID(rs.getInt(3));
+				model.setStart(rs.getInt(4));
+				model.setUsername(rs.getString(5));
+				list.add(model);
+			}
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public void insert(RateModel model) {
+		String sql="INSERT INTO rate (context, product_id, star, user_name) VALUES (?, ?, ?, ?)";
+		try {
+			Connection conn=DBConnection.getConnection();
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setString(1, model.getContext());
+			ps.setInt(2, model.getProductID());
+			ps.setInt(3, model.getStart());
+			ps.setString(4, model.getUsername());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
 }

@@ -40,7 +40,7 @@
 						<div class="col-md-3">
 							<div class="header-logo">
 								<a href="#" class="logo">
-									<img src="" alt="" style="max-width: 100px; max-height: 100px;">
+									<img src="https://scontent.fsgn8-4.fna.fbcdn.net/v/t39.30808-6/402055637_304358942504547_7059836029533435256_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFrNwb9wPoR3RytavM4A-buMN1KH-10yR4w3Uof7XTJHo7Gy8EG7jruRn1IEMTQrZsqehY8AyOUS3MuvoJ3_zuC&_nc_ohc=vBtpH1GUiUgAX924rnC&_nc_ht=scontent.fsgn8-4.fna&oh=00_AfCXDb_7Dxk1-epvhNwFl7T6FLXtQSn1N5pr7aQGGZW9yA&oe=6561843D" alt="" style="max-width: 250px; max-height: 250px;">
 								</a>
 							</div>
 						</div>
@@ -72,13 +72,13 @@
 								<!-- /Wishlist -->
 
 								<!-- Cart -->
+							<!-- Cart -->
 								<div class="dropdown">
 									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 										<i class="fa fa-shopping-cart"></i>
-										<span>Giỏ hàng</span>
-										<div class="qty">3</div>
+										<span>Your Cart</span>								
 									</a>
-									
+									<div class="cart-dropdown">
 										<div class="cart-btns">
 											<a href="cart">View Cart</a>
 											<a href="thanhToan">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
@@ -86,14 +86,8 @@
 									</div>
 								</div>
 								<!-- /Cart -->
-								<!-- Menu Toogle -->
-								<div class="menu-toggle">
-									<a href="#">
-										<i class="fa fa-bars"></i>
-										<span>Menu</span>
-									</a>
-								</div>
-								<!-- /Menu Toogle -->
+								
+								<!-- /Cart -->
 							</div>
 						</div>
 						<!-- /ACCOUNT -->
