@@ -52,7 +52,7 @@
 							</div>
 							<div class="product-body">
 								<h3 class="product-name">
-									<a href="product-detail?id=${i.productID}">${i.productName}</a>
+									<a href="detailProduct?id=${i.productID}">${i.productName}</a>
 								</h3>
 								<h4 class="product-price">
 				                    <fmt:formatNumber type="currency" value="${i.price - 100}" currencyCode="VND" pattern="#,##0 VND" var="formattedPrice" />

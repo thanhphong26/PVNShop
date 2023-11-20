@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,7 +73,8 @@
 								<a class="review-link" href="#">${ allRate} Review(s) | Add your review</a>
 							</div>
 							<div>
-								<h3 class="product-price">${detailPro.price} vnd</h3>
+								<fmt:formatNumber type="currency" value="${detailPro.price}" currencyCode="VND" pattern="#,##0 VND" var="formattedPrice" />
+                                    <h4 class="product-price">${formattedPrice}</h4>
 								<span class="product-available">  ${detailPro.inventory > 0 ? 'In Stock' : 'Out of Stock'}</span>
 							</div>
 
@@ -309,7 +310,8 @@
 							<div class="product-body">
 								<p class="product-category">${catePro.cateName}</p>
 								<h3 class="product-name"><a href="detailProduct?id=${i.productID}">${i.productName}</a></h3>
-								<h4 class="product-price">${i.price }</h4>
+								<fmt:formatNumber type="currency" value="${i.price - 100}" currencyCode="VND" pattern="#,##0 VND" var="formattedPrice" />
+                                <h4 class="product-price">${formattedPrice}</h4>
 								<div class="product-rating">
 								</div>
 							</div>
