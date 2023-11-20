@@ -114,7 +114,7 @@
 						<li class="active"><a href="home">Trang Chủ</a></li>
 
 						<li><a href="#">Phân loại</a></li>
-						<li><a href="#">Laptops</a></li>
+						<li><a href="product">Laptops</a></li>
 						<li><a href="#">Smartphones</a></li>
 						<li><a href="#">Cameras</a></li>
 						<li><a href="#">Accessories</a></li>

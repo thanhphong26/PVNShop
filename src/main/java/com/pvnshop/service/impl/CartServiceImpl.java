@@ -25,5 +25,9 @@ public class CartServiceImpl implements ICartService{
 	public void delete(String user) {
 		cartD.delete(user);
 	}
+	@Override
+	public void insert(CartModel cart) {
+		cartD.insert(cart);
+	}
 
 }

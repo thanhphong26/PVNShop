@@ -20,7 +20,7 @@
 	rel="stylesheet" />
 <link href='<c:url value="/templates/web/css/style.css"/>'
 	rel="stylesheet" />
-<link rel="stylesheet" href='<c:url value="css/font-awesome.min.css"/>'>
+<link rel="stylesheet" href='<c:url value="/templates/web/css/font-awesome.min.css"/>'>
 </head>
 <body>
 	<%@ include file="/common/web/header.jsp"%>

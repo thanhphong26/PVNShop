@@ -32,12 +32,16 @@ public class ProductServiceImpl implements IProductService {
 		return pDAO.findTop();
 	}
 	@Override
-	public List<ProductModel> findProductByCate(int cateId) {
+	public List<ProductModel> findProductByCate(String cateId) {
 		return pDAO.findProductByCate(cateId);
 	}
 
 	@Override
 	public int CountProductByCate(int cateId) {
 		return pDAO.CountProductByCate(cateId);
+	}
+	@Override
+	public ProductModel getLastestProduct() {
+		return pDAO.getLastestProduct();
 	}
 }
