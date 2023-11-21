@@ -389,5 +389,42 @@ public void UpdateProduct(ProductModel model) {
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
+@Override
+public int countProduct() {
+	String sql = "select count(*) from product";
+    int count = 0;
+    
+    try {
+        Connection conn = new DBConnection().getConnection();
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        
+        if (rs.next()) {
+            count = rs.getInt(1);
+        }
+        
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    
+    return count;
+}
+@Override
+public List<ProductModel> pagingProduct(int index) {
+	List<ProductModel> list = new ArrayList<ProductModel>();
+    String query = "SELECT * FROM product ORDER BY productId LIMIT ?, 10";
+    try {
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setInt(1, (index - 1) * 10);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            list.add(new ProductModel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
+                    rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9),rs.getInt(10),rs.getInt(11)));
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace(); 
+    }
+    return list;
 }
 }

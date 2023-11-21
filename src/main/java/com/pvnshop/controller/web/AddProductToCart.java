@@ -27,14 +27,19 @@ public class AddProductToCart extends HttpServlet{
 				CartModel cart=new CartModel();
 				HttpSession session=req.getSession();
 				UserModel user = (UserModel) session.getAttribute("account");
-				String username=user.getUsername();
-				cart.setUsername(username);
-				cart.setProductID(productId);
-				cart.setQuantity(1);
-				
-				cartService.insert(cart);
-				//resp.getWriter().write("Thêm sản phẩm vào giỏ hàng thành công");
-				resp.sendRedirect("cart");
+				System.out.println("heelo"+ user);
+				if(user==null) {
+					resp.sendRedirect("login");
+				}else {
+					String username=user.getUsername();
+					cart.setUsername(username);
+					cart.setProductID(productId);
+					cart.setQuantity(1);
+					
+					cartService.insert(cart);
+					//resp.getWriter().write("Thêm sản phẩm vào giỏ hàng thành công");
+					resp.sendRedirect("cart");
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

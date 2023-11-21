@@ -180,6 +180,8 @@ public class HomeController extends HttpServlet{
 	}
 	private void searchByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String txtsearch=req.getParameter("txt");
+		HttpSession session = req.getSession();
+	    session.setAttribute("searchKeyword", txtsearch);
 		List<ProductModel> listSearch=searchService.searchByName(txtsearch);
 		List<ProductModel> bestSellerProduct=proService.findTop3();
 		ProductModel lastestProduct=proService.getLastestProduct();

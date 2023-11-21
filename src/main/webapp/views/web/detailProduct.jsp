@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,7 @@
 					<div class="col-md-5 col-md-push-2">
 						<div id="product-main-img">
 							<div class="product-preview">
-								<img src="https://storage.googleapis.com/image_cnpm/Image_Product/ASUS-TUF-Gaming-F15-2021-black-fpt-1.webp" alt="">
+								<img src="${detailPro.image }" alt="">
 							</div>
 
 							<div class="product-preview">
@@ -69,58 +70,40 @@
 									<i class="fa fa-star"></i>
 									<i class="fa fa-star-o"></i>
 								</div>
-								<a class="review-link" href="#">10 Review(s) | Add your review</a>
+								<a class="review-link" href="#">${ allRate} Review(s) | Add your review</a>
 							</div>
 							<div>
-								<h3 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h3>
-								<span class="product-available">In Stock</span>
+								<fmt:formatNumber type="currency" value="${detailPro.price}" currencyCode="VND" pattern="#,##0 VND" var="formattedPrice" />
+                                    <h4 class="product-price">${formattedPrice}</h4>
+								<span class="product-available">  ${detailPro.inventory > 0 ? 'In Stock' : 'Out of Stock'}</span>
 							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
 							<div class="product-options">
 								<label>
 									Size
 									<select class="input-select">
-										<option value="0">X</option>
+										<option value="0">${detailPro.size}</option>
 									</select>
 								</label>
 								<label>
 									Color
 									<select class="input-select">
-										<option value="0">Red</option>
+										<option value="0">${detailPro.color}</option>
 									</select>
 								</label>
 							</div>
 
-							<div class="add-to-cart">
-								<div class="qty-label">
-									Qty
-									<div class="input-number">
-										<input type="number">
-										<span class="qty-up">+</span>
-										<span class="qty-down">-</span>
-									</div>
-								</div>
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-							</div>
+						 <div class="add-to-cart">
+		                    <!-- Sửa nội dung của thẻ button và sự kiện onclick -->
+		                    <button class="add-to-cart-btn" onclick="addToCart(${detailPro.productID})">
+							    <i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng
+							</button>
 
-							<ul class="product-btns">
-								<li><a href="#"><i class="fa fa-heart-o"></i> add to wishlist</a></li>
-								<li><a href="#"><i class="fa fa-exchange"></i> add to compare</a></li>
-							</ul>
+		                </div>
 
 							<ul class="product-links">
 								<li>Category:</li>
-								<li><a href="#">Headphones</a></li>
-								<li><a href="#">Accessories</a></li>
-							</ul>
-
-							<ul class="product-links">
-								<li>Share:</li>
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-								<li><a href="#"><i class="fa fa-envelope"></i></a></li>
+								<li><a href="/PVNShop/product?id=${catePro.cateID}">${catePro.cateName}</a></li>
 							</ul>
 
 						</div>
@@ -133,8 +116,7 @@
 							<!-- product tab nav -->
 							<ul class="tab-nav">
 								<li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
-								<li><a data-toggle="tab" href="#tab2">Details</a></li>
-								<li><a data-toggle="tab" href="#tab3">Reviews (3)</a></li>
+								<li><a data-toggle="tab" href="#tab3">Reviews (${allRate })</a></li>
 							</ul>
 							<!-- /product tab nav -->
 
@@ -144,21 +126,11 @@
 								<div id="tab1" class="tab-pane fade in active">
 									<div class="row">
 										<div class="col-md-12">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+											<p>${detailPro.description}</p>
 										</div>
 									</div>
 								</div>
 								<!-- /tab1  -->
-
-								<!-- tab2  -->
-								<div id="tab2" class="tab-pane fade in">
-									<div class="row">
-										<div class="col-md-12">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-										</div>
-									</div>
-								</div>
-								<!-- /tab2  -->
 
 								<!-- tab3  -->
 								<div id="tab3" class="tab-pane fade in">
@@ -167,13 +139,12 @@
 										<div class="col-md-3">
 											<div id="rating">
 												<div class="rating-avg">
-													<span>4.5</span>
+													<span>${avgStar}</span>
 													<div class="rating-stars">
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star-o"></i>
+														<c:forEach var="j" begin="1" end="${avgStar}" step="1">
+																<i class="fa fa-star"></i>
+															</c:forEach>
+																<i class="fa fa-star-o empty"></i>
 													</div>
 												</div>
 												<ul class="rating">
@@ -186,9 +157,9 @@
 															<i class="fa fa-star"></i>
 														</div>
 														<div class="rating-progress">
-															<div style="width: 80%;"></div>
+															<div style="width: ${fiveStarP}%;"></div>
 														</div>
-														<span class="sum">3</span>
+														<span class="sum">${fiveStar}</span>
 													</li>
 													<li>
 														<div class="rating-stars">
@@ -199,9 +170,9 @@
 															<i class="fa fa-star-o"></i>
 														</div>
 														<div class="rating-progress">
-															<div style="width: 60%;"></div>
+															<div style="width: ${fourStarP}%;"></div>
 														</div>
-														<span class="sum">2</span>
+														<span class="sum">${fourStar}</span>
 													</li>
 													<li>
 														<div class="rating-stars">
@@ -212,9 +183,9 @@
 															<i class="fa fa-star-o"></i>
 														</div>
 														<div class="rating-progress">
-															<div></div>
+															<div style="width: ${threeStarP}%;"></div>
 														</div>
-														<span class="sum">0</span>
+														<span class="sum">${threeStar}</span>
 													</li>
 													<li>
 														<div class="rating-stars">
@@ -225,9 +196,9 @@
 															<i class="fa fa-star-o"></i>
 														</div>
 														<div class="rating-progress">
-															<div></div>
+															<div style="width: ${twoStarP}%;"></div>
 														</div>
-														<span class="sum">0</span>
+														<span class="sum">${twoStar}</span>
 													</li>
 													<li>
 														<div class="rating-stars">
@@ -238,9 +209,9 @@
 															<i class="fa fa-star-o"></i>
 														</div>
 														<div class="rating-progress">
-															<div></div>
+															<div style="width: ${oneStarP}%;"></div>
 														</div>
-														<span class="sum">0</span>
+														<span class="sum">${oneStar}</span>
 													</li>
 												</ul>
 											</div>
@@ -251,74 +222,38 @@
 										<div class="col-md-6">
 											<div id="reviews">
 												<ul class="reviews">
+												<c:forEach var="i" items="${ratePro}">
 													<li>
 														<div class="review-heading">
-															<h5 class="name">John</h5>
-															<p class="date">27 DEC 2018, 8:0 PM</p>
+															<h5 class="name">${i.username }</h5>
+															
 															<div class="review-rating">
+															<c:forEach var="j" begin="1" end="${i.start}" step="1">
 																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
+															</c:forEach>
 																<i class="fa fa-star-o empty"></i>
 															</div>
 														</div>
 														<div class="review-body">
-															<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+															<p>${i.context}</p>
 														</div>
 													</li>
-													<li>
-														<div class="review-heading">
-															<h5 class="name">John</h5>
-															<p class="date">27 DEC 2018, 8:0 PM</p>
-															<div class="review-rating">
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star-o empty"></i>
-															</div>
-														</div>
-														<div class="review-body">
-															<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-														</div>
-													</li>
-													<li>
-														<div class="review-heading">
-															<h5 class="name">John</h5>
-															<p class="date">27 DEC 2018, 8:0 PM</p>
-															<div class="review-rating">
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star-o empty"></i>
-															</div>
-														</div>
-														<div class="review-body">
-															<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-														</div>
-													</li>
+													</c:forEach>
 												</ul>
-												<ul class="reviews-pagination">
-													<li class="active">1</li>
-													<li><a href="#">2</a></li>
-													<li><a href="#">3</a></li>
-													<li><a href="#">4</a></li>
-													<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-												</ul>
+			
 											</div>
 										</div>
 										<!-- /Reviews -->
 
 										<!-- Review Form -->
 										<div class="col-md-3">
-											<div id="review-form">
-												<form class="review-form">
-													<input class="input" type="text" placeholder="Your Name">
-													<input class="input" type="email" placeholder="Your Email">
-													<textarea class="input" placeholder="Your Review"></textarea>
-													<div class="input-rating">
+
+										<div id="review-form">
+										   <div id="review-form">
+											    <form class="review-form" action="addReview" method="post">
+											        <input class="input" type="text" placeholder="Your Name" name="username">
+											        <textarea class="input" placeholder="Your Review" name="context"></textarea>
+											       	<div class="input-rating">
 														<span>Your Rating: </span>
 														<div class="stars">
 															<input id="star5" name="rating" value="5" type="radio"><label for="star5"></label>
@@ -328,9 +263,10 @@
 															<input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
 														</div>
 													</div>
-													<button class="primary-btn">Submit</button>
-												</form>
+											        <button class="primary-btn" type="submit">Submit</button>
+											    </form>
 											</div>
+										</div>
 										</div>
 										<!-- /Review Form -->
 									</div>
@@ -361,165 +297,69 @@
 						</div>
 					</div>
 
+					<c:forEach var="i" items="${relatedProduct}">
 					<!-- product -->
 					<div class="col-md-3 col-xs-6">
 						<div class="product">
 							<div class="product-img">
-								<img src="./img/product01.png" alt="">
+								<img src="${i.image }" alt="">
 								<div class="product-label">
 									<span class="sale">-30%</span>
 								</div>
 							</div>
 							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+								<p class="product-category">${catePro.cateName}</p>
+								<h3 class="product-name"><a href="detailProduct?id=${i.productID}">${i.productName}</a></h3>
+								<fmt:formatNumber type="currency" value="${i.price - 100}" currencyCode="VND" pattern="#,##0 VND" var="formattedPrice" />
+                                <h4 class="product-price">${formattedPrice}</h4>
 								<div class="product-rating">
 								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-								</div>
 							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-							</div>
+				            <div class="add-to-cart">
+			                    <!-- Sửa nội dung của thẻ button và sự kiện onclick -->
+			                    <button class="add-to-cart-btn" onclick="addToCart(${i.productID})">
+								    <i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng
+								</button>
+
+			                </div>
 						</div>
 					</div>
-					<!-- /product -->
-
-					<!-- product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="./img/product02.png" alt="">
-								<div class="product-label">
-									<span class="new">NEW</span>
-								</div>
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-								<div class="product-rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-							</div>
-						</div>
-					</div>
-					<!-- /product -->
-
 					<div class="clearfix visible-sm visible-xs"></div>
-
-					<!-- product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="./img/product03.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-								<div class="product-rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o"></i>
-								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-							</div>
-						</div>
-					</div>
+					
 					<!-- /product -->
+					</c:forEach>
 
-					<!-- product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="./img/product04.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-								<div class="product-rating">
-								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-							</div>
-						</div>
-					</div>
-					<!-- /product -->
-
+					
 				</div>
 				<!-- /row -->
 			</div>
 			<!-- /container -->
 		</div>
-		<!-- /Section -->
-
-		<!-- NEWSLETTER -->
-		<div id="newsletter" class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<div class="col-md-12">
-						<div class="newsletter">
-							<p>Sign Up for the <strong>NEWSLETTER</strong></p>
-							<form>
-								<input class="input" type="email" placeholder="Enter Your Email">
-								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
-							</form>
-							<ul class="newsletter-follow">
-								<li>
-									<a href="#"><i class="fa fa-facebook"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="fa fa-twitter"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="fa fa-instagram"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="fa fa-pinterest"></i></a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- /NEWSLETTER -->
+<!-- /Section -->
+			<script>
+			    function addToCart(productID) {
+			        var xhr = new XMLHttpRequest();
+			        xhr.open("POST", "add-to-cart", true);
+			        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			
+			        var userSession = "${sessionScope.account}";
+			        if (!userSession || userSession.trim() === "") {
+			            window.location.href = "login";
+			            return;
+			        }
+			
+			        var params = "id=" + productID;
+			        xhr.send(params);
+			
+			        xhr.onreadystatechange = function () {
+			            if (xhr.readyState === 4 && xhr.status === 200) {
+			                var response = xhr.responseText;
+			                console.log(response);
+			                alert("Thêm sản phẩm vào giỏ hàng thành công");
+			                window.location.href = "cart";
+			            }
+			        };
+			    }
+		</script>
 </body>
 </html>

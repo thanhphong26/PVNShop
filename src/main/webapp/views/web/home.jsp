@@ -97,7 +97,7 @@
 			
 				<td style="border-radius: 15px;vertical-align: middle; margin:20px;  background-color:white; ">
 				<a><img style="width: 200px; height: 150px;" src= ${i.image }></a><br>		
-					<a><p style="margin-top:30px; font-weight: bold; font-size: 15px;">${i.productName }</p></a>
+					<a href="detailProduct?id=${i.productID}"><p style="margin-top:30px; font-weight: bold; font-size: 15px;">${i.productName }</p></a>
 				</td>
 				
 			
@@ -116,7 +116,7 @@
 			
 				<td style="border-radius: 15px;vertical-align: middle; margin:20px;  background-color:white; ">
 				<a><img style="width: 200px; height: 150px;" src= ${i.image }><br></a>
-					<a><p style="margin-top:30px; font-weight: bold; font-size: 15px;">${i.productName }</p></a>
+					<a href="detailProduct?id=${i.productID}"><p style="margin-top:30px; font-weight: bold; font-size: 15px;">${i.productName }</p></a>
 				</td>
 				
 			
@@ -140,8 +140,6 @@
 					<p style="width:300px; margin:20px 20px;margin-top:40px; font-style:italic; font-size: 15px;">"${i.username }"</p>
 					
 				</td>
-				
-			
 		</c:forEach>
 		</tr>
 		

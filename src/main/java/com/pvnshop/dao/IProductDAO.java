@@ -18,4 +18,6 @@ public interface IProductDAO {
 	public void InsertProduct(ProductModel model);
 	public void DeleteProduct(int productID);
 	public void UpdateProduct(ProductModel model);
+	int countProduct();
+	List<ProductModel> pagingProduct(int index);
 }

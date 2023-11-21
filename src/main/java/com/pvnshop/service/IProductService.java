@@ -19,4 +19,6 @@ public interface IProductService {
 	public void DeleteProduct(int productID);
 	public void UpdateProduct(ProductModel model);
 	public int CreateProductID();
+	int countProduct();
+	List<ProductModel> pagingProduct(int index);
 }

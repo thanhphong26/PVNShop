@@ -3,6 +3,12 @@
  <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
     <head>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<style>
+        .active {
+            color: #ff0000; /* Red color for the active item */
+        }
+    </style>
 </head>
 <header>
 			<!-- TOP HEADER -->
@@ -40,7 +46,7 @@
 						<div class="col-md-3">
 							<div class="header-logo">
 								<a href="#" class="logo">
-									<img src="" alt="" style="max-width: 100px; max-height: 100px;">
+									<img src="https://scontent.fsgn8-4.fna.fbcdn.net/v/t39.30808-6/402055637_304358942504547_7059836029533435256_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFrNwb9wPoR3RytavM4A-buMN1KH-10yR4w3Uof7XTJHo7Gy8EG7jruRn1IEMTQrZsqehY8AyOUS3MuvoJ3_zuC&_nc_ohc=vBtpH1GUiUgAX924rnC&_nc_ht=scontent.fsgn8-4.fna&oh=00_AfCXDb_7Dxk1-epvhNwFl7T6FLXtQSn1N5pr7aQGGZW9yA&oe=6561843D" alt="" style="max-width: 250px; max-height: 250px;">
 								</a>
 							</div>
 						</div>
@@ -72,13 +78,13 @@
 								<!-- /Wishlist -->
 
 								<!-- Cart -->
+							<!-- Cart -->
 								<div class="dropdown">
 									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 										<i class="fa fa-shopping-cart"></i>
-										<span>Giỏ hàng</span>
-										<div class="qty">3</div>
+										<span>Your Cart</span>								
 									</a>
-									
+									<div class="cart-dropdown">
 										<div class="cart-btns">
 											<a href="cart">View Cart</a>
 											<a href="thanhToan">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
@@ -86,14 +92,8 @@
 									</div>
 								</div>
 								<!-- /Cart -->
-								<!-- Menu Toogle -->
-								<div class="menu-toggle">
-									<a href="#">
-										<i class="fa fa-bars"></i>
-										<span>Menu</span>
-									</a>
-								</div>
-								<!-- /Menu Toogle -->
+								
+								<!-- /Cart -->
 							</div>
 						</div>
 						<!-- /ACCOUNT -->
@@ -105,23 +105,43 @@
 			<!-- /MAIN HEADER -->
 		</header>
 		<nav id="navigation">
-			<!-- container -->
-			<div class="container">
-				<!-- responsive-nav -->
-				<div id="responsive-nav">
-					<!-- NAV -->
-					<ul class="main-nav nav navbar-nav">
-						<li class="active"><a href="home">Trang Chủ</a></li>
+    <!-- container -->
+    <div class="container">
+        <!-- responsive-nav -->
+        <div id="responsive-nav">
+            <!-- NAV -->
+            <ul class="main-nav nav navbar-nav">
+                <li><a href="home" onclick="setActive(this, 'Trang Chủ');">Trang Chủ</a></li>
+                <li><a href="#" onclick="setActive(this, 'Phân loại');">Phân loại</a></li>
+                <li><a href="product" onclick="setActive(this, 'Laptops');">Laptops</a></li>
+                <li><a href="#" onclick="setActive(this, 'Smartphones');">Smartphones</a></li>
+                <li><a href="#" onclick="setActive(this, 'Cameras');">Cameras</a></li>
+                <li><a href="#" onclick="setActive(this, 'Accessories');">Accessories</a></li>
+            </ul>
+            <!-- /NAV -->
+        </div>
+        <!-- /responsive-nav -->
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        function setActive(element, categoryName) {
+            // Remove 'active' class from all items
+            $('.main-nav a').removeClass('active');
 
-						<li><a href="#">Phân loại</a></li>
-						<li><a href="product">Laptops</a></li>
-						<li><a href="#">Smartphones</a></li>
-						<li><a href="#">Cameras</a></li>
-						<li><a href="#">Accessories</a></li>
-					</ul>
-					<!-- /NAV -->
-				</div>
-				<!-- /responsive-nav -->
-			</div>
-			<!-- /container -->
-		</nav>
+            // Add 'active' class to the clicked item
+            $(element).addClass('active');
+
+            // Store the active category in session storage
+            sessionStorage.setItem('activeCategory', categoryName);
+        }
+
+        // Restore active category on page load
+        $(document).ready(function () {
+            var activeCategory = sessionStorage.getItem('activeCategory');
+            if (activeCategory) {
+                $('.main-nav a:contains(' + activeCategory + ')').addClass('active');
+            }
+        });
+    </script>
+    <!-- /container -->
+</nav>
