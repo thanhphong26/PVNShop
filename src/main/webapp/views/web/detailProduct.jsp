@@ -103,7 +103,7 @@
 
 							<ul class="product-links">
 								<li>Category:</li>
-								<li><a href="/PVNShop/product">${catePro.cateName}</a></li>
+								<li><a href="/PVNShop/product?id=${catePro.cateID}">${catePro.cateName}</a></li>
 							</ul>
 
 						</div>
