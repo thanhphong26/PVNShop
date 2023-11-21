@@ -53,6 +53,23 @@ public class ProductServiceImpl implements IProductService {
 		return pDAO.getLastestProduct();
 	}
 	@Override
+	public void InsertProduct(ProductModel model) {
+		pDAO.InsertProduct(model);
+	}
+	@Override
+	public void DeleteProduct(int productID) {
+		pDAO.DeleteProduct(productID);
+	}
+	@Override
+	public void UpdateProduct(ProductModel model) {
+		pDAO.UpdateProduct(model);
+	}
+	@Override
+	public int CreateProductID() {
+			List<ProductModel> Pro = pDAO.findAll();
+			int proid = Pro.get(Pro.size()-1).getProductID();
+			return proid + 1;
+  @Override 
 	public int countProduct() {
 		return pDAO.countProduct();
 	}

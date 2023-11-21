@@ -15,6 +15,10 @@ public interface IProductService {
 	List<ProductModel> sortPriceLowtoHigh();
 	List<ProductModel> sortPriceHightoLow();
 	ProductModel getLastestProduct();
+	public void InsertProduct(ProductModel model);
+	public void DeleteProduct(int productID);
+	public void UpdateProduct(ProductModel model);
+	public int CreateProductID();
 	int countProduct();
 	List<ProductModel> pagingProduct(int index);
 }

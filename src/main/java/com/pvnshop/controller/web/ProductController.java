@@ -17,7 +17,6 @@ import com.pvnshop.models.RateModel;
 import com.pvnshop.service.ICartService;
 import com.pvnshop.service.ICategoryService;
 import com.pvnshop.service.IProductService;
-import com.pvnshop.service.IRateService;
 import com.pvnshop.service.impl.CartServiceImpl;
 import com.pvnshop.service.impl.CategoryServiceImpl;
 import com.pvnshop.service.impl.ProductServiceImpl;

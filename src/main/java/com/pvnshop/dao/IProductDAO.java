@@ -15,6 +15,9 @@ public interface IProductDAO {
 	List<ProductModel> sortPriceLowtoHigh();
 	List<ProductModel> sortPriceHightoLow();
 	ProductModel getLastestProduct();
+	public void InsertProduct(ProductModel model);
+	public void DeleteProduct(int productID);
+	public void UpdateProduct(ProductModel model);
 	int countProduct();
 	List<ProductModel> pagingProduct(int index);
 }

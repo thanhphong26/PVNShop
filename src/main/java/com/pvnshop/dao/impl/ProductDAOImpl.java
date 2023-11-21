@@ -326,6 +326,70 @@ public class ProductDAOImpl implements IProductDAO {
 		return null;
 	}
 @Override
+public void InsertProduct(ProductModel model) {
+	String sql = "insert into product (productId, productName, version, description, price, color, size, inventory, image, cate_id, manu_id) values (?,?,?,?,?,?,?,?,?,?,?)";
+	try {
+		new DBConnection();
+		conn = DBConnection.getConnection();
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, model.getProductID());
+		ps.setString(2, model.getProductName());
+		ps.setString(3, model.getVersion());
+		ps.setString(4, model.getDescription());
+		ps.setInt(5, model.getPrice());
+		ps.setString(6, model.getColor());
+		ps.setString(7, model.getSize());
+		ps.setInt(8, model.getInventory());
+		ps.setString(9, model.getImage());
+		ps.setInt(10, model.getCateID());
+		ps.setInt(11, model.getManuID());
+		ps.executeUpdate();
+		conn.close();
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+}
+@Override
+public void DeleteProduct(int productID) {
+	String sql = "Delete from product where productId = ?";
+	try {
+		new DBConnection();
+		conn = DBConnection.getConnection();
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, productID);
+		ps.executeUpdate();
+		conn.close();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	
+}
+@Override
+public void UpdateProduct(ProductModel model) {
+	String sql = "Update product set productName=?, version=?, description=?, price=?, color=?, size=?, inventory=?, image=?, cate_id=?, manu_id=? where productId = ?";
+	try {
+		new DBConnection();
+		conn = DBConnection.getConnection();
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, model.getProductName());
+		ps.setString(2, model.getVersion());
+		ps.setString(3, model.getDescription());
+		ps.setInt(4, model.getPrice());
+		ps.setString(5, model.getColor());
+		ps.setString(6, model.getSize());
+		ps.setInt(7, model.getInventory());
+		ps.setString(8, model.getImage());
+		ps.setInt(9, model.getCateID());
+		ps.setInt(10, model.getManuID());
+		ps.setInt(11, model.getProductID());
+		ps.executeUpdate();
+		conn.close();
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+@Override
 public int countProduct() {
 	String sql = "select count(*) from product";
     int count = 0;
