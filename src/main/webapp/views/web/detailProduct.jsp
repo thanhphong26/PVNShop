@@ -337,28 +337,29 @@
 		</div>
 <!-- /Section -->
 			<script>
-					    function addToCart(productID) {
-					        // Thực hiện AJAX request để gọi Servlet
-					        var xhr = new XMLHttpRequest();
-					        xhr.open("POST", "add-to-cart", true);
-					        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-					        
-					        // Gửi thông tin sản phẩm đến Servlet
-					        var params = "id=" + productID;
-					        xhr.send(params);
-					        
-					        // Xử lý phản hồi từ Servlet (nếu cần)
-					        xhr.onreadystatechange = function () {
-					            if (xhr.readyState === 4 && xhr.status === 200) {
-					                // Xử lý phản hồi từ Servlet (nếu cần)
-					                var response = xhr.responseText;
-					                console.log(response);
-					                alert("Thêm sản phẩm vào giỏ hàng thành công");
-					                window.location.href = "cart";
-					                // Cập nhật giao diện người dùng (nếu cần)
-					            }
-					        };
-					    }
-					</script>
+			    function addToCart(productID) {
+			        var xhr = new XMLHttpRequest();
+			        xhr.open("POST", "add-to-cart", true);
+			        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			
+			        var userSession = "${sessionScope.account}";
+			        if (!userSession || userSession.trim() === "") {
+			            window.location.href = "login";
+			            return;
+			        }
+			
+			        var params = "id=" + productID;
+			        xhr.send(params);
+			
+			        xhr.onreadystatechange = function () {
+			            if (xhr.readyState === 4 && xhr.status === 200) {
+			                var response = xhr.responseText;
+			                console.log(response);
+			                alert("Thêm sản phẩm vào giỏ hàng thành công");
+			                window.location.href = "cart";
+			            }
+			        };
+			    }
+		</script>
 </body>
 </html>

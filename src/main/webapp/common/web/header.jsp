@@ -3,6 +3,12 @@
  <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
     <head>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<style>
+        .active {
+            color: #ff0000; /* Red color for the active item */
+        }
+    </style>
 </head>
 <header>
 			<!-- TOP HEADER -->
@@ -99,23 +105,43 @@
 			<!-- /MAIN HEADER -->
 		</header>
 		<nav id="navigation">
-			<!-- container -->
-			<div class="container">
-				<!-- responsive-nav -->
-				<div id="responsive-nav">
-					<!-- NAV -->
-					<ul class="main-nav nav navbar-nav">
-						<li class="active"><a href="home">Trang Chủ</a></li>
+    <!-- container -->
+    <div class="container">
+        <!-- responsive-nav -->
+        <div id="responsive-nav">
+            <!-- NAV -->
+            <ul class="main-nav nav navbar-nav">
+                <li><a href="home" onclick="setActive(this, 'Trang Chủ');">Trang Chủ</a></li>
+                <li><a href="#" onclick="setActive(this, 'Phân loại');">Phân loại</a></li>
+                <li><a href="product" onclick="setActive(this, 'Laptops');">Laptops</a></li>
+                <li><a href="#" onclick="setActive(this, 'Smartphones');">Smartphones</a></li>
+                <li><a href="#" onclick="setActive(this, 'Cameras');">Cameras</a></li>
+                <li><a href="#" onclick="setActive(this, 'Accessories');">Accessories</a></li>
+            </ul>
+            <!-- /NAV -->
+        </div>
+        <!-- /responsive-nav -->
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        function setActive(element, categoryName) {
+            // Remove 'active' class from all items
+            $('.main-nav a').removeClass('active');
 
-						<li><a href="#">Phân loại</a></li>
-						<li><a href="product">Laptops</a></li>
-						<li><a href="#">Smartphones</a></li>
-						<li><a href="#">Cameras</a></li>
-						<li><a href="#">Accessories</a></li>
-					</ul>
-					<!-- /NAV -->
-				</div>
-				<!-- /responsive-nav -->
-			</div>
-			<!-- /container -->
-		</nav>
+            // Add 'active' class to the clicked item
+            $(element).addClass('active');
+
+            // Store the active category in session storage
+            sessionStorage.setItem('activeCategory', categoryName);
+        }
+
+        // Restore active category on page load
+        $(document).ready(function () {
+            var activeCategory = sessionStorage.getItem('activeCategory');
+            if (activeCategory) {
+                $('.main-nav a:contains(' + activeCategory + ')').addClass('active');
+            }
+        });
+    </script>
+    <!-- /container -->
+</nav>

@@ -90,10 +90,12 @@ public class ProductController extends HttpServlet {
 		List<ProductModel> listProductByCategory=productService.findProductByCate(cateID);
 		List<ProductModel> bestSellerProduct=productService.findTop3();
 		ProductModel lastestProduct=productService.getLastestProduct();
+		
 		if(cateID==null) {
 			req.setAttribute("listProduct", listProduct);
 		}else {
 			req.setAttribute("listProduct",  listProductByCategory);
+			req.setAttribute("seactive", cateID);
 		}
 		
 		//req.setAttribute("listProduct", listProduct);
@@ -101,7 +103,7 @@ public class ProductController extends HttpServlet {
 		req.setAttribute("setactive", cateID);
 		req.setAttribute("bestSellerProduct", bestSellerProduct);
 		req.setAttribute("lastestProduct", lastestProduct);
-	
+
 		req.getRequestDispatcher("/views/web/product.jsp").forward(req, resp);
 
 	}

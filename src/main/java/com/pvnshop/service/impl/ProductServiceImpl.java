@@ -52,4 +52,12 @@ public class ProductServiceImpl implements IProductService {
 	public ProductModel getLastestProduct() {
 		return pDAO.getLastestProduct();
 	}
+	@Override
+	public int countProduct() {
+		return pDAO.countProduct();
+	}
+	@Override
+	public List<ProductModel> pagingProduct(int index) {
+		return pDAO.pagingProduct(index);
+	}
 }

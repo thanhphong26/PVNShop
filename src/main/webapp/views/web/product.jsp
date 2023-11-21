@@ -34,11 +34,14 @@
 					<div class="checkbox-filter">
 						<c:forEach var="c" items="${listCate}">
 							<div class="input-checkbox">
-										<label for="category-1" class="active">
-											<a href="product?id=${c.cateID}" >${c.cateName}</a>
-											<small></small>
-										</label>
-									</div>
+							    <label for="category-1" class="">
+							        <a href="product?id=${c.cateID}" style="${setactive == c.cateID ? 'color: #ff0000;' : ''}">
+							            ${c.cateName}
+							        </a>
+							        <small></small>
+							    </label>
+							</div>
+
 						</c:forEach>
 					</div>
 				</div>
@@ -153,14 +156,14 @@
 
 				<!-- store bottom filter -->
 				<div class="store-filter clearfix">
-					<span class="store-qty">Showing 20-100 products</span>
-					<ul class="store-pagination">
-						<li class="active">1</li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-					</ul>
+				    <span class="store-qty">Showing ${currentPage * productPerPage - productPerPage + 1}-${currentPage * productPerPage} of ${totalProduct} products</span>
+				    <ul class="store-pagination">
+				        <c:forEach var="page" begin="1" end="${totalPages}">
+				            <li class="${page == currentPage ? 'active' : ''}">
+				                <a href="${pageUrl}?page=${page}">${page}</a>
+				            </li>
+				        </c:forEach>
+				    </ul>
 				</div>
 				<!-- /store bottom filter -->
 			</div>
@@ -214,44 +217,44 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+
 <script>
-							    function addToCart(productID) {
-							        // Thực hiện AJAX request để gọi Servlet
-							        var xhr = new XMLHttpRequest();
-							        xhr.open("POST", "add-to-cart", true);
-							        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-							        
-							        // Gửi thông tin sản phẩm đến Servlet
-							        var params = "id=" + productID;
-							        xhr.send(params);
-							        
-							        // Xử lý phản hồi từ Servlet (nếu cần)
-							        xhr.onreadystatechange = function () {
-							            if (xhr.readyState === 4 && xhr.status === 200) {
-							                // Xử lý phản hồi từ Servlet (nếu cần)
-							                var response = xhr.responseText;
-							                console.log(response);
-							                alert("Thêm sản phẩm vào giỏ hàng thành công");
-							                window.location.href = "cart";
-							                // Cập nhật giao diện người dùng (nếu cần)
-							            }
-							        };
-							    }
+    function addToCart(productID) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "add-to-cart", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        var userSession = "${sessionScope.account}";
+        if (!userSession || userSession.trim() === "") {
+            window.location.href = "login";
+            return;
+        }
+
+        var params = "id=" + productID;
+        xhr.send(params);
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var response = xhr.responseText;
+                console.log(response);
+                alert("Thêm sản phẩm vào giỏ hàng thành công");
+                window.location.href = "cart";
+            }
+        };
+    }
 </script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var categoryLinks = document.querySelectorAll('.category-link');
 
         categoryLinks.forEach(function(link) {
             link.addEventListener('click', function(event) {
-                event.preventDefault(); // Ngăn chặn hành động mặc định của link
-
-                // Loại bỏ lớp active từ tất cả các link khác
+                event.preventDefault(); 
                 categoryLinks.forEach(function(otherLink) {
                     otherLink.classList.remove('active');
                 });
 
-                // Thêm lớp active vào link được click
                 this.classList.add('active');
             });
         });
