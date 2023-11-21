@@ -36,7 +36,7 @@ public class ProductController extends HttpServlet {
 		}
 	}	
 	private void findAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int cateID=Integer.parseInt(req.getParameter("id"));
+		String cateID=req.getParameter("id");
 		List<ProductModel> listProduct=productService.findAll();
 		List<CategoryModel> listCategory=cateService.findAll();
 		List <ProductModel> i = productService.findTop3();
@@ -45,7 +45,7 @@ public class ProductController extends HttpServlet {
 		List<ProductModel> listProductByCategory=productService.findProductByCate(cateID);
 		List<ProductModel> bestSellerProduct=productService.findTop3();
 		ProductModel lastestProduct=productService.getLastestProduct();
-		if(cateID==0) {
+		if(cateID==null) {
 			req.setAttribute("listProduct", listProduct);
 		}else {
 			req.setAttribute("listProduct",  listProductByCategory);

@@ -46,14 +46,14 @@ public class ProductDAOImpl implements IProductDAO {
 		return list;
 	}
 	@Override
-	public List<ProductModel> findProductByCate(int cateId) {
+	public List<ProductModel> findProductByCate(String cateId) {
 		String sql = "Select * from product where cate_id = ?";
 		List<ProductModel> list = new ArrayList<ProductModel>();
 		try {
 			new DBConnection();
 			conn = DBConnection.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, cateId);
+			ps.setString(1, cateId);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				ProductModel model = new ProductModel();
@@ -343,8 +343,7 @@ public void InsertProduct(ProductModel model) {
 		ps.setString(9, model.getImage());
 		ps.setInt(10, model.getCateID());
 		ps.setInt(11, model.getManuID());
-		//ps.executeUpdate();
-		System.out.println(ps.executeUpdate());
+		ps.executeUpdate();
 		conn.close();
 		
 	} catch (Exception e) {
