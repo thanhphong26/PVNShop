@@ -17,7 +17,6 @@ import com.pvnshop.models.RateModel;
 import com.pvnshop.service.ICartService;
 import com.pvnshop.service.ICategoryService;
 import com.pvnshop.service.IProductService;
-import com.pvnshop.service.IRateService;
 import com.pvnshop.service.impl.CartServiceImpl;
 import com.pvnshop.service.impl.CategoryServiceImpl;
 import com.pvnshop.service.impl.ProductServiceImpl;
@@ -37,7 +36,7 @@ public class ProductController extends HttpServlet {
 		}
 	}	
 	private void findAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String cateID=req.getParameter("id");
+		int cateID=Integer.parseInt(req.getParameter("id"));
 		List<ProductModel> listProduct=productService.findAll();
 		List<CategoryModel> listCategory=cateService.findAll();
 		List <ProductModel> i = productService.findTop3();
@@ -46,7 +45,7 @@ public class ProductController extends HttpServlet {
 		List<ProductModel> listProductByCategory=productService.findProductByCate(cateID);
 		List<ProductModel> bestSellerProduct=productService.findTop3();
 		ProductModel lastestProduct=productService.getLastestProduct();
-		if(cateID==null) {
+		if(cateID==0) {
 			req.setAttribute("listProduct", listProduct);
 		}else {
 			req.setAttribute("listProduct",  listProductByCategory);

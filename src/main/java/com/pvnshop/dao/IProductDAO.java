@@ -10,9 +10,12 @@ public interface IProductDAO {
 	List<ProductModel> findAll();
 	List<ProductModel> findTop();
 	ProductModel findByID(int id);
- 	List<ProductModel> findProductByCate(String cateId);
+ 	List<ProductModel> findProductByCate(int cateId);
 	int CountProductByCate(int cateId);
 	List<ProductModel> sortPriceLowtoHigh();
 	List<ProductModel> sortPriceHightoLow();
 	ProductModel getLastestProduct();
+	public void InsertProduct(ProductModel model);
+	public void DeleteProduct(int productID);
+	public void UpdateProduct(ProductModel model);
 }
