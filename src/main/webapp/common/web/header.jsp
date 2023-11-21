@@ -20,7 +20,6 @@
 						<li><a href="#"><i class="fa fa-map-marker"></i> 1 Vo Van Ngan, TP Thu Duc</a></li>
 					</ul>
 					<ul class="header-links pull-right">
-						<li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
 						<c:choose>
 							<c:when test="${sessionScope.account == null}">
 								<li><a href="login"><i class="fa fa-user-o"></i> Đăng Nhập/Đăng Ký</a></li>
@@ -73,11 +72,6 @@
 						<!-- ACCOUNT -->
 						<div class="col-md-3 clearfix">
 							<div class="header-ctn">
-								<!-- Wishlist -->
-
-								<!-- /Wishlist -->
-
-								<!-- Cart -->
 							<!-- Cart -->
 								<div class="dropdown">
 									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
@@ -91,9 +85,6 @@
 										</div>
 									</div>
 								</div>
-								<!-- /Cart -->
-								
-								<!-- /Cart -->
 							</div>
 						</div>
 						<!-- /ACCOUNT -->
@@ -120,22 +111,17 @@
             </ul>
             <!-- /NAV -->
         </div>
-        <!-- /responsive-nav -->
     </div>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         function setActive(element, categoryName) {
-            // Remove 'active' class from all items
             $('.main-nav a').removeClass('active');
 
-            // Add 'active' class to the clicked item
             $(element).addClass('active');
 
-            // Store the active category in session storage
             sessionStorage.setItem('activeCategory', categoryName);
         }
 
-        // Restore active category on page load
         $(document).ready(function () {
             var activeCategory = sessionStorage.getItem('activeCategory');
             if (activeCategory) {
