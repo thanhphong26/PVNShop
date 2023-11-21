@@ -389,6 +389,7 @@ public void UpdateProduct(ProductModel model) {
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
+}
 @Override
 public int countProduct() {
 	String sql = "select count(*) from product";

@@ -69,6 +69,7 @@ public class ProductServiceImpl implements IProductService {
 			List<ProductModel> Pro = pDAO.findAll();
 			int proid = Pro.get(Pro.size()-1).getProductID();
 			return proid + 1;
+	}
   @Override 
 	public int countProduct() {
 		return pDAO.countProduct();
