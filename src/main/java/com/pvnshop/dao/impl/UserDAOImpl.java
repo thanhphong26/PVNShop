@@ -60,10 +60,26 @@ public class UserDAOImpl implements IUserDAO{
 
 	@Override
 	public void update(UserModel user) {
-		// TODO Auto-generated method stub
+		String sql="update user set name = ?, phone =?, email=?, addr=? where userName = ?";
+		try {
+			conn=DBConnection.getConnection();
+			ps=conn.prepareStatement(sql);
+			ps.setString(5, user.getUsername());
+			ps.setString(1, user.getName());
+			ps.setString(2, user.getPhone());
+			ps.setString(3, user.getEmail());
+			ps.setString(4, user.getAddress());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
 		
 	}
 
+	public static void main(String[] args) {
+		
+	}
+	
 	@Override
 	public void delete(UserModel user) {
 		// TODO Auto-generated method stub
