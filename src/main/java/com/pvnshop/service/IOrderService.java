@@ -8,4 +8,5 @@ public interface IOrderService {
 	int sum();
 	void add(OrderModel model);
 	int maxID();
+	List<OrderModel> findByUser(String name);
 }

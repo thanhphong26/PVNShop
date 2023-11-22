@@ -32,4 +32,10 @@ public class OrderServiceImpl implements IOrderService{
 		return oDAO.maxID();
 	}
 
+	@Override
+	public List<OrderModel> findByUser(String name) {
+		// TODO Auto-generated method stub
+		return oDAO.findByUser(name);
+	}
+
 }

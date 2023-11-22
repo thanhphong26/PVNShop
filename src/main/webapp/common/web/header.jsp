@@ -25,7 +25,7 @@
 								<li><a href="login"><i class="fa fa-user-o"></i> Đăng Nhập/Đăng Ký</a></li>
 							</c:when>
 							<c:otherwise>
-								<li class="nav-item"><a class="nav-link" href="#">${sessionScope.account.name}</a>
+								<li class="nav-item"><a class="nav-link" href="Account">${sessionScope.account.name}</a>
 								<li class="nav-item"><a class="nav-link"
 									href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
 							</c:otherwise>
