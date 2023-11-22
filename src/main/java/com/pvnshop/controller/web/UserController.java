@@ -32,18 +32,20 @@ public class UserController extends HttpServlet{
 		UserModel user = (UserModel) session.getAttribute("account");
 		String name = user.getUsername();
 		req.setAttribute("user", userSer.getOneUser(name));
-		System.out.println(detailSer.findAll());
+		
+		//System.out.println(detailSer.findAll());
 		req.setAttribute("detail", detailSer.findAll());
+		
 		System.out.println(orderSer.findByUser(name));
 		req.setAttribute("order", orderSer.findByUser(name));
-		System.out.println(productSer.findAll());
+		
+		//System.out.println(productSer.findAll());
 		req.setAttribute("product", productSer.findAll());
 		req.getRequestDispatcher("/views/web/user.jsp").forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String url = req.getRequestURI().toString();
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		UserModel model = new UserModel();

@@ -127,39 +127,6 @@
 
 					</div>
 					<!--/tab-pane-->
-
-					<table border="1"
-						style="margin-bottom: 50px; width: 100%; border-collapse: collapse; margin-top: 20px;">
-						<thead style="background-color: #f2f2f2;">
-							<th style="padding: 10px; text-align: left;">OrderID</th>
-							<th style="padding: 10px; text-align: left;">Time</th>
-							<th style="padding: 10px; text-align: left;">Total</th>
-							<th style="padding: 10px; text-align: left;">Payment Method</th>
-							<th style="padding: 10px; text-align: left;">Shipping Method</th>
-							<th style="padding: 10px; text-align: left;">Ship Cost</th>
-							<th style="padding: 10px; text-align: left;">Product name</th>
-							<th style="padding: 10px; text-align: left;">Image</th>
-
-						</thead>
-						<tbody>
-							<c:forEach var="orderDetail" items="${detail}">
-								<tr style="border-bottom: 1px solid #ddd;">
-									<td>${orderDetail.orderID}</td>
-									<td>${orderDetail.time}</td>
-									<td>${orderDetail.total}</td>
-									<td>${orderDetail.payment_method}</td>
-									<td>${orderDetail.order.shipping_method}</td>
-									<td>${orderDetail.order.ship_cost}</td>
-									<td>${orderDetail.product.productName}</td>
-									<td><img src="${orderDetail.product.image}"
-										alt="Product Image"></td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-
-
-
 				</div>
 				<!--/tab-pane-->
 			</div>
