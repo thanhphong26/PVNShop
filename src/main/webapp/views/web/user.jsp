@@ -28,16 +28,13 @@
 			<div class="col-sm-3">
 				<!--left col-->
 
-
+				<h4>Thông Tin Cá Nhân</h4>
 				<div class="text-center">
 					<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
 						class="avatar img-circle img-thumbnail" alt="avatar">
-					<h1>${user.name}</h1>
+					<h3>${user.name}</h3>
 				</div>
 				<br>
-
-
-
 				<ul class="list-group">
 					<li class="list-group-item text-muted">Hoạt động <i
 						class="fa fa-dashboard fa-1x"></i></li>

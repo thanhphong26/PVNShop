@@ -356,7 +356,6 @@
 			                var response = xhr.responseText;
 			                console.log(response);
 			                alert("Thêm sản phẩm vào giỏ hàng thành công");
-			                window.location.href = "cart";
 			            }
 			        };
 			    }

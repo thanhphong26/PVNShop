@@ -225,14 +225,12 @@ document.addEventListener('DOMContentLoaded', function() {
 							        var params = "id=" + productID;
 							        xhr.send(params);
 							        
-							        // Xử lý phản hồi từ Servlet (nếu cần)
 							        xhr.onreadystatechange = function () {
 							            if (xhr.readyState === 4 && xhr.status === 200) {
 							                // Xử lý phản hồi từ Servlet (nếu cần)
 							                var response = xhr.responseText;
 							                console.log(response);
 							                alert("Thêm sản phẩm vào giỏ hàng thành công");
-							                window.location.href = "cart";
 							                // Cập nhật giao diện người dùng (nếu cần)
 							            }
 							        };

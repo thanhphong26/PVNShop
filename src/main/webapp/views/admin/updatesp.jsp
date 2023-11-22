@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Thêm sản phẩm</title>
+<title>Cập nhật sản phẩm</title>
 </head>
 <body>
 	<main>
@@ -16,7 +16,7 @@
 					<div class="card shadow-lg border-0 rounded-lg mt-5">
 						<br> <br>
 						<div class="card-header">
-							<h3 class="text-center font-weight-light my-4">Thêm sản phẩm</h3>
+							<h3 class="text-center font-weight-light my-4">Cập nhật sản phẩm</h3>
 						</div>
 						<div class="card-body">
 							<form action="SuaSanPham" method="post">

@@ -18,7 +18,7 @@
    
 
     <form action="/PVNShop/admin_page" style="display: inline-block;">
-        <input type="submit" value="Quay Lại" style="height: 30px; width: 140px; margin: 15px 10px; background-color: #DD0000; color: white; border-radius: 15px;">
+        <button class="primary-btn" type="submit">Quay lại</button>
     </form>
 </div>
 

@@ -15,10 +15,9 @@
       <div style="text-align: right; margin-top: 20px;">
     <h1 style="display: inline-block; margin-right: 410px; margin-left: 5px;">Quản lý hóa đơn</h1>
     
-    <input type="button" value="Thêm" style="display: inline-block; height: 30px; width: 140px; margin: 15px 10px; background-color: #00AA00; color: white; border-radius: 15px;">
 
     <form action="/PVNShop/admin_page" style="display: inline-block;">
-        <input type="submit" value="Quay Lại" style="height: 30px; width: 140px; margin: 15px 10px; background-color: #DD0000; color: white; border-radius: 15px;">
+         <button class="primary-btn" type="submit">Quay lại</button>
     </form>
 </div>
 
@@ -39,7 +38,6 @@
         <th style="padding: 10px; text-align: left;">Discount_id</th>
         <th style="padding: 10px; text-align: left;">Shipping_method</th>
         <th style="padding: 10px; text-align: left;">Ship_cost</th>
-		<th style="padding: 10px; text-align: left;">Option</th>
     </thead>
     <tbody>
         <c:forEach var="i" items="${listO}">
@@ -54,19 +52,13 @@
                 <td style="padding: 10px; text-align: left;">${i.discount_id}</td>
                 <td style="padding: 10px; text-align: left;">${i.shipping_method}</td>
                 <td style="padding: 10px; text-align: left;">${i.ship_cost}</td>
-                <td style="padding: 10px; text-align: left;">
-
-                    <input type="button" value="Sửa" style="margin: 15px 21px; background-color:#6699FF; color: white; border-radius:15px;">
-
-                    <input type="submit" value="Xóa" style="margin: 15px 21px; background-color:#FF6633; color: white; border-radius:15px;">
-                </td>
+               
             </tr>
         </c:forEach>
     </tbody>
  
 </table>
 					
-
 
 </body>
 </html>

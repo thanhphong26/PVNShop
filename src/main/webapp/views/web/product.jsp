@@ -58,7 +58,7 @@
 									<a href="detailProduct?id=${i.productID}">${i.productName}</a>
 								</h3>
 								<h4 class="product-price">
-				                    <fmt:formatNumber type="currency" value="${i.price - 100}" currencyCode="VND" pattern="#,##0 VND" var="formattedPrice" />
+				                    <fmt:formatNumber type="currency" value="${i.price-1000000}" currencyCode="VND" pattern="#,##0 VND" var="formattedPrice" />
 				                    ${formattedPrice}
 				                    <del class="product-old-price">
 				                        <fmt:formatNumber type="currency" value="${i.price}" currencyCode="VND" pattern="#,##0 VND" var="formattedOldPrice" />
@@ -136,7 +136,7 @@
 									<h3 class="product-name">
 										<a href="detailProduct?id=${i.productID}">${i.productName}</a>
 									</h3>
-									<fmt:formatNumber type="currency" value="${i.price - 100}" currencyCode="VND" pattern="#,##0 VND" var="formattedPrice" />
+									<fmt:formatNumber type="currency" value="${i.price}" currencyCode="VND" pattern="#,##0 VND" var="formattedPrice" />
                                     <h4 class="product-price">${formattedPrice}</h4>
 									<h5 class="product-size">Khối lượng: ${i.size} kg</h5>
 								</div>
@@ -238,7 +238,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 var response = xhr.responseText;
                 console.log(response);
                 alert("Thêm sản phẩm vào giỏ hàng thành công");
-                window.location.href = "cart";
             }
         };
     }

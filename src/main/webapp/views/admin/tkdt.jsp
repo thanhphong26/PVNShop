@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,13 +18,9 @@
    
 
     <form action="/PVNShop/admin_page" style="display: inline-block;">
-        <input type="submit" value="Quay Lại" style="height: 30px; width: 140px; margin: 15px 10px; background-color: #DD0000; color: white; border-radius: 15px;">
+         <button class="primary-btn" type="submit">Quay lại</button>
     </form>
 </div>
-
-
-
-
 </div>
 <nav id="navigation">
 			<!-- container -->
@@ -46,11 +42,10 @@
 		</nav>
 <div style="margin:30px 0px;text-align: center; padding: 20px; background-color: #f0f0f0; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
     <h1 style="font-size: 24px; color: #333;">Tổng Doanh Thu:</h1>
-    <p style="font-size: 18px; color: #555; margin-top: 10px;">${sum}</p>
+    <p style="font-size: 18px; color: #555; margin-top: 10px;">
+    <fmt:formatNumber type="currency" value="${sum}" currencyCode="VND" pattern="#,##0 VND" var="formattedOldPrice" />
+				                            ${formattedOldPrice} 
+    </p>
 </div>
-
-					
-
-
 </body>
 </html>

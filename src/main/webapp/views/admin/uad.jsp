@@ -15,10 +15,9 @@
       <div style="text-align: right; margin-top: 20px;">
     <h1 style="display: inline-block; margin-right: 510px; margin-left: 5px;">Quản lý user</h1>
     
-    <input type="button" value="Thêm" style="display: inline-block; height: 30px; width: 140px; margin: 15px 10px; background-color: #00AA00; color: white; border-radius: 15px;">
 
     <form action="/PVNShop/admin_page" style="display: inline-block;">
-        <input type="submit" value="Quay Lại" style="height: 30px; width: 140px; margin: 15px 10px; background-color: #DD0000; color: white; border-radius: 15px;">
+         <button class="primary-btn" type="submit">Quay lại</button>
     </form>
 </div>
 
@@ -36,7 +35,6 @@
         <th style="padding: 10px; text-align: left;">Address</th>
         <th style="padding: 10px; text-align: left;">IsAdmin</th>
         <th style="padding: 10px; text-align: left;">Password</th>
-        <th style="padding: 10px; text-align: left;">Option</th>
     </thead>
     <tbody>
         <c:forEach var="i" items="${listO}">
@@ -47,13 +45,7 @@
                 <td style="padding: 10px; text-align: left;">${i.email}</td>
                 <td style="padding: 10px; text-align: left;">${i.address}</td>
                 <td style="padding: 10px; text-align: left;">${i.isAdmin}</td>
-                <td style="padding: 10px; text-align: left;">${i.password}</td>
-                <td style="padding: 10px; text-align: left;">
-
-                    <input type="button" value="Sửa" style="margin: 15px 21px; background-color:#6699FF; color: white; border-radius:15px;">
-
-                    <input type="submit" value="Xóa" style="margin: 15px 21px; background-color:#FF6633; color: white; border-radius:15px;">
-                </td>
+                <td style="padding: 10px; text-align: left;">${i.password}</td>  
             </tr>
         </c:forEach>
     </tbody>

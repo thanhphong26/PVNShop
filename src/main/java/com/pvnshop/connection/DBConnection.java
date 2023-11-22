@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 
 public class DBConnection {
-	private static String DB_URL="jdbc:mysql://localhost:3306/cnpm";
+	private static String DB_URL="jdbc:mysql://localhost:3306/pvnshop_nhom6";
 	private static String USER_NAME="root";
 	private static String PASSWORD="15242635";
 	private static Connection conn;
@@ -27,18 +27,5 @@ public class DBConnection {
 			
 		}
 		return (conn);
-	}
-	public static void main(String[] args) {
-		try {
-			Connection conn = getConnection();
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM product");
-			while (rs.next()) {
-			System.out.println(rs.getInt(1) + " " + rs.getString(2) );
-			}
-			conn.close(); 
-			} catch (Exception ex) {
-			ex.printStackTrace();
-			}
 	}
 }
