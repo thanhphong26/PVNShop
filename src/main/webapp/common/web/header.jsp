@@ -103,11 +103,9 @@
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
                 <li><a href="home" onclick="setActive(this, 'Trang Chủ');">Trang Chủ</a></li>
-                <li><a href="#" onclick="setActive(this, 'Phân loại');">Phân loại</a></li>
+
                 <li><a href="product" onclick="setActive(this, 'Laptops');">Laptops</a></li>
-                <li><a href="#" onclick="setActive(this, 'Smartphones');">Smartphones</a></li>
-                <li><a href="#" onclick="setActive(this, 'Cameras');">Cameras</a></li>
-                <li><a href="#" onclick="setActive(this, 'Accessories');">Accessories</a></li>
+
             </ul>
             <!-- /NAV -->
         </div>

@@ -125,8 +125,8 @@
 								<!-- tab1  -->
 								<div id="tab1" class="tab-pane fade in active">
 									<div class="row">
-										<div class="col-md-12">
-											<p>${detailPro.description}</p>
+										<div class="col-md-12" >
+											<p style="color: black;">${detailPro.description}</p>
 										</div>
 									</div>
 								</div>
@@ -235,7 +235,7 @@
 															</div>
 														</div>
 														<div class="review-body">
-															<p>${i.context}</p>
+															<p style="color: black;">${i.context}</p>
 														</div>
 													</li>
 													</c:forEach>
